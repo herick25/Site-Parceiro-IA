@@ -91,7 +91,7 @@ export default function App() {
           Quer tirar dúvidas ou contratar agora mesmo?
         </p>
         <a
-          href="" // Insira aqui o link do WhatsApp quando tiver o número
+          href=""
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition"
@@ -101,7 +101,13 @@ export default function App() {
       </section>
 
       <footer className="bg-gray-200 text-center py-6 text-sm text-gray-600">
-        &copy; {new Date().getFullYear()} Parceiro IA. Todos os direitos reservados.
+        <p className="mb-2">
+          &copy; {new Date().getFullYear()} Parceiro IA. Todos os direitos reservados.
+        </p>
+        <p>
+          <a href="/termos-de-uso.html" className="text-blue-600 underline mr-4">Termos de Uso</a>
+          <a href="/politica-de-privacidade.html" className="text-blue-600 underline">Política de Privacidade</a>
+        </p>
       </footer>
     </div>
   );
