@@ -1,3 +1,4 @@
+// App.jsx
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
@@ -22,7 +23,7 @@ export default function App() {
               <Header />
 
               {/* Início */}
-              <div id="inicio" className="pt-24">
+              <div id="inicio" className="pt-24 scroll-mt-24">
                 <header className="bg-white shadow-md py-10 px-4 text-center">
                   <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-2">Parceiro IA</h1>
                   <p className="text-lg text-gray-700">
@@ -44,7 +45,7 @@ export default function App() {
               </div>
 
               {/* Funcionalidades */}
-              <section id="funcionalidades" className="bg-white py-16 px-4">
+              <section id="funcionalidades" className="bg-white py-16 px-4 scroll-mt-24">
                 <div className="max-w-6xl mx-auto">
                   <h2 className="text-2xl font-semibold font-montserrat mb-10 text-center">
                     Funcionalidades por Módulo
@@ -104,7 +105,7 @@ export default function App() {
               </section>
 
               {/* Planos */}
-              <section id="planos" className="py-12 bg-gelo px-4">
+              <section id="planos" className="py-12 bg-gelo px-4 scroll-mt-24">
                 <div className="max-w-3xl mx-auto text-center">
                   <h2 className="text-2xl font-semibold font-montserrat mb-6">Planos e Preços</h2>
                   <div className="grid md:grid-cols-2 gap-6">
@@ -126,7 +127,7 @@ export default function App() {
               </section>
 
               {/* Contato */}
-              <section id="contato" className="py-12 px-4 text-center">
+              <section id="contato" className="py-12 px-4 text-center scroll-mt-24">
                 <h2 className="text-2xl font-semibold font-montserrat mb-4">Fale conosco</h2>
                 <p className="text-gray-800 mb-6">
                   Quer tirar dúvidas ou contratar agora mesmo?
@@ -141,6 +142,16 @@ export default function App() {
                   Falar no WhatsApp
                 </a>
               </section>
+
+              {/* Botão flutuante do WhatsApp */}
+              <a
+                href=""
+                target="_blank"
+                rel="noopener noreferrer"
+                className="fixed bottom-6 right-6 bg-menta text-white p-4 rounded-full shadow-lg hover:bg-escuro transition z-50"
+              >
+                <FaWhatsapp className="w-6 h-6" />
+              </a>
 
               {/* Rodapé Moderno */}
               <footer className="bg-white border-t border-gray-200 text-sm text-gray-600">
