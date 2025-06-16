@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChatBubbleBottomCenterTextIcon, CameraIcon } from "@heroicons/react/24/outline";
+import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 export default function Header() {
   const [menuAberto, setMenuAberto] = useState(false);
@@ -15,7 +16,7 @@ export default function Header() {
           <img
             src="/logo-parceiro.PNG"
             alt="Logo Parceiro IA"
-            className="w-10 h-10 md:w-12 md:h-12 object-contain"
+            className="w-9 h-9 object-contain"
           />
           <span className="text-xl font-montserrat font-bold text-escuro">
             Parceiro IA
@@ -104,16 +105,16 @@ export default function Header() {
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-gray-600 hover:text-menta transition"
                 >
-                  <CameraIcon className="w-5 h-5" />
+                  <FaInstagram className="w-5 h-5" />
                   Instagram
                 </a>
                 <a
                   href=""
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 text-center bg-menta text-white px-4 py-2 rounded-md font-medium hover:bg-escuro transition"
+                  className="inline-flex items-center justify-center gap-2 text-center bg-menta text-white px-4 py-2 rounded-md font-medium hover:bg-escuro transition mt-2 mb-20"
                 >
-                  <ChatBubbleBottomCenterTextIcon className="w-5 h-5" />
+                  <FaWhatsapp className="w-5 h-5" />
                   Fale no WhatsApp
                 </a>
               </div>
