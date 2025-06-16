@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 import Termos from "./pages/Termos";
@@ -10,8 +10,14 @@ import {
   FlagIcon,
 } from "@heroicons/react/24/outline";
 import { FaWhatsapp, FaInstagram, FaEnvelope } from "react-icons/fa";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 export default function App() {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true });
+  }, []);
+
   return (
     <div className="bg-gelo text-escuro min-h-screen font-sans scroll-smooth">
       <Routes>
@@ -22,15 +28,15 @@ export default function App() {
               <Header />
 
               {/* Início */}
-              <div id="inicio" className="pt-24">
-                <header className="bg-white shadow-md py-10 px-4 text-center">
+              <div id="inicio" className="pt-24 scroll-mt-24 bg-white" data-aos="fade-up">
+                <header className="shadow-md py-10 px-4 text-center">
                   <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-2">Parceiro IA</h1>
                   <p className="text-lg text-gray-700">
                     Seu assistente pessoal com inteligência artificial
                   </p>
                 </header>
 
-                <section className="max-w-4xl mx-auto px-4 py-12 animate-fadeIn">
+                <section className="max-w-4xl mx-auto px-4 py-12">
                   <h2 className="text-2xl font-semibold font-montserrat mb-4">O que é o Parceiro IA?</h2>
                   <p className="text-gray-800 mb-4">
                     O Parceiro IA é um assistente pessoal inteligente que te ajuda no dia a dia com lembretes,
@@ -44,13 +50,13 @@ export default function App() {
               </div>
 
               {/* Funcionalidades */}
-              <section id="funcionalidades" className="bg-white py-16 px-4">
+              <section id="funcionalidades" className="py-16 px-4 bg-gelo scroll-mt-24" data-aos="fade-up">
                 <div className="max-w-6xl mx-auto">
                   <h2 className="text-2xl font-semibold font-montserrat mb-10 text-center">
                     Funcionalidades por Módulo
                   </h2>
-                  <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                    <div className="bg-gelo rounded-xl shadow-md p-6">
+                  <div className="grid md:grid-cols-2 gap-8">
+                    <div className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105">
                       <h3 className="text-xl font-bold font-montserrat flex items-center gap-2 mb-3">
                         <CalendarIcon className="w-6 h-6 text-menta" />
                         Módulo 1 – Lembretes e Compromissos
@@ -63,7 +69,7 @@ export default function App() {
                       </ul>
                     </div>
 
-                    <div className="bg-gelo rounded-xl shadow-md p-6">
+                    <div className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105">
                       <h3 className="text-xl font-bold font-montserrat flex items-center gap-2 mb-3">
                         <CurrencyDollarIcon className="w-6 h-6 text-menta" />
                         Módulo 2 – Gestão Financeira
@@ -76,7 +82,7 @@ export default function App() {
                       </ul>
                     </div>
 
-                    <div className="bg-gelo rounded-xl shadow-md p-6">
+                    <div className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105">
                       <h3 className="text-xl font-bold font-montserrat flex items-center gap-2 mb-3">
                         <FlagIcon className="w-6 h-6 text-menta" />
                         Módulo 3 – Gestão de Metas
@@ -88,7 +94,7 @@ export default function App() {
                       </ul>
                     </div>
 
-                    <div className="bg-gelo rounded-xl shadow-md p-6">
+                    <div className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105">
                       <h3 className="text-xl font-bold font-montserrat flex items-center gap-2 mb-3">
                         <CheckCircleIcon className="w-6 h-6 text-menta" />
                         Módulo 4 – Listas
@@ -104,16 +110,16 @@ export default function App() {
               </section>
 
               {/* Planos */}
-              <section id="planos" className="py-12 bg-gelo px-4">
+              <section id="planos" className="py-16 bg-white px-4 scroll-mt-24" data-aos="fade-up">
                 <div className="max-w-3xl mx-auto text-center">
                   <h2 className="text-2xl font-semibold font-montserrat mb-6">Planos e Preços</h2>
                   <div className="grid md:grid-cols-2 gap-6">
-                    <div className="border rounded-lg p-6 bg-white shadow-sm hover:shadow-md transition">
+                    <div className="border rounded-lg p-6 bg-gelo shadow-sm hover:shadow-md transition">
                       <h3 className="text-xl font-bold font-montserrat mb-2">Plano Mensal</h3>
                       <p className="text-3xl font-semibold mb-4">R$ 29,99</p>
                       <p className="text-gray-600">Pagamento recorrente mês a mês.</p>
                     </div>
-                    <div className="relative border-2 border-menta rounded-lg p-6 bg-white shadow-md hover:scale-[1.02] transition-transform">
+                    <div className="relative border-2 border-menta rounded-lg p-6 bg-gelo shadow-md hover:scale-[1.02] transition-transform">
                       <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-menta text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
                         Garanta já!
                       </span>
@@ -126,7 +132,7 @@ export default function App() {
               </section>
 
               {/* Contato */}
-              <section id="contato" className="py-12 px-4 text-center">
+              <section id="contato" className="py-16 px-4 text-center scroll-mt-24 bg-gelo" data-aos="fade-up">
                 <h2 className="text-2xl font-semibold font-montserrat mb-4">Fale conosco</h2>
                 <p className="text-gray-800 mb-6">
                   Quer tirar dúvidas ou contratar agora mesmo?
@@ -142,7 +148,7 @@ export default function App() {
                 </a>
               </section>
 
-              {/* Rodapé Moderno */}
+              {/* Rodapé */}
               <footer className="bg-white border-t border-gray-200 text-sm text-gray-600">
                 <div className="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8 text-center md:text-left">
                   <div>
@@ -169,7 +175,6 @@ export default function App() {
                   </div>
                 </div>
 
-                {/* Ícones sociais */}
                 <div className="bg-gelo py-4 text-center text-xs text-gray-500">
                   <div className="flex justify-center gap-4 mb-2 text-lg">
                     <a href="mailto:contato@parceiroia.com" title="Email">
