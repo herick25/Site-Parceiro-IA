@@ -15,7 +15,7 @@ export default function Header() {
           <img
             src="/logo-parceiro.PNG"
             alt="Logo Parceiro IA"
-            className="w-9 h-9 object-contain"
+            className="w-10 h-10 md:w-12 md:h-12 object-contain"
           />
           <span className="text-xl font-montserrat font-bold text-escuro">
             Parceiro IA
