@@ -162,7 +162,7 @@ export default function App() {
                   Quer tirar dúvidas ou contratar agora mesmo?
                 </p>
                 <a
-                  href="https://wa.me/5581999999999"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-menta text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-transform hover:scale-105 font-semibold text-lg"
