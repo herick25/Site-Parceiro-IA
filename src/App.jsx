@@ -34,6 +34,14 @@ export default function App() {
                   <p className="text-lg text-gray-700">
                     Seu assistente pessoal com inteligência artificial
                   </p>
+                  <div className="mt-6">
+                    <a
+                      href="#planos"
+                      className="inline-block bg-menta text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-transform hover:scale-105"
+                    >
+                      Comece agora mesmo
+                    </a>
+                  </div>
                 </header>
 
                 <section className="max-w-4xl mx-auto px-4 py-12">
@@ -43,9 +51,17 @@ export default function App() {
                     controle financeiro, acompanhamento de metas e organização de listas. Tudo isso por voz,
                     direto no seu WhatsApp.
                   </p>
-                  <p className="text-gray-800">
+                  <p className="text-gray-800 mb-6">
                     Ideal para quem busca praticidade e quer manter a vida em ordem com a ajuda da tecnologia.
                   </p>
+                  <div className="text-center">
+                    <a
+                      href="#contato"
+                      className="inline-block bg-menta text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-transform hover:scale-105"
+                    >
+                      Quero experimentar
+                    </a>
+                  </div>
                 </section>
               </div>
 
@@ -106,6 +122,14 @@ export default function App() {
                       </ul>
                     </div>
                   </div>
+                  <div className="text-center mt-10">
+                    <a
+                      href="#planos"
+                      className="inline-block bg-menta text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-transform hover:scale-105"
+                    >
+                      Veja os planos disponíveis
+                    </a>
+                  </div>
                 </div>
               </section>
 
@@ -138,7 +162,7 @@ export default function App() {
                   Quer tirar dúvidas ou contratar agora mesmo?
                 </p>
                 <a
-                  href=""
+                  href="https://wa.me/5581999999999"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 bg-menta text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-transform hover:scale-105 font-semibold text-lg"
