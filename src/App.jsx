@@ -9,7 +9,7 @@ import {
   CheckCircleIcon,
   FlagIcon,
 } from "@heroicons/react/24/outline";
-import { FaWhatsapp, FaInstagram, FaEnvelope } from "react-icons/fa";
+import { FaWhatsapp, FaInstagram, FaEnvelope, FaStar } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -17,6 +17,17 @@ export default function App() {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
   }, []);
+
+  const ModernCTA = ({ children }) => (
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center gap-3 px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-menta to-emerald-600 rounded-xl shadow-md hover:scale-105 hover:brightness-110 transition-transform"
+    >
+      {children}
+    </a>
+  );
 
   return (
     <div className="bg-gelo text-escuro min-h-screen font-sans scroll-smooth">
@@ -30,105 +41,109 @@ export default function App() {
               {/* Início */}
               <div id="inicio" className="pt-24 scroll-mt-24 bg-white" data-aos="fade-up">
                 <header className="shadow-md py-10 px-4 text-center">
-                  <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-2">Parceiro IA</h1>
-                  <p className="text-lg text-gray-700">
-                    Seu assistente pessoal com inteligência artificial
+                  <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-2">Tenha um parceiro trabalhando para você dia e noite!</h1>
+                  <p className="text-lg text-menta">
+                    Deixe a inteligência artificial organizar sua rotina e facilitar sua vida!
                   </p>
                   <div className="mt-6">
-                    <a
-                      href="#planos"
-                      className="inline-block bg-menta text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-transform hover:scale-105"
-                    >
-                      Comece agora mesmo
-                    </a>
+                    <ModernCTA>
+                      <FaWhatsapp className="w-6 h-6 animate-pulse" />
+                      Fale agora no WhatsApp
+                    </ModernCTA>
                   </div>
                 </header>
 
                 <section className="max-w-4xl mx-auto px-4 py-12">
-                  <h2 className="text-2xl font-semibold font-montserrat mb-4">O que é o Parceiro IA?</h2>
+                  <h2 className="text-3xl font-semibold text-escuro mb-2 bg-gradient-to-r from-menta to-emerald-600 text-white py-2 px-4 rounded-lg shadow-md inline-block">O que é o Parceiro IA?</h2>
                   <p className="text-gray-800 mb-4">
-                    O Parceiro IA é um assistente pessoal inteligente que te ajuda no dia a dia com lembretes,
-                    controle financeiro, acompanhamento de metas e organização de listas. Tudo isso por voz,
-                    direto no seu WhatsApp.
+                    Imagine ter um assistente pessoal digital que organiza suas tarefas, controla seus gastos, acompanha suas metas e gerencia suas listas, tudo diretamente no seu WhatsApp!
                   </p>
-                  <p className="text-gray-800 mb-6">
-                    Ideal para quem busca praticidade e quer manter a vida em ordem com a ajuda da tecnologia.
+                  <p className="text-gray-800">
+                    Se você busca praticidade, controle e mais organização no seu dia, o Parceiro IA é a solução inteligente que você estava procurando.
                   </p>
-                  <div className="text-center">
-                    <a
-                      href="#contato"
-                      className="inline-block bg-menta text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-transform hover:scale-105"
-                    >
-                      Quero experimentar
-                    </a>
-                  </div>
                 </section>
               </div>
 
-              {/* Funcionalidades */}
-              <section id="funcionalidades" className="py-16 px-4 bg-gelo scroll-mt-24" data-aos="fade-up">
+              {/* Seção sobre Funcionalidade do App com Fotos */}
+              <section id="funcionalidade" className="py-16 px-4 bg-white text-center" data-aos="fade-up">
                 <div className="max-w-6xl mx-auto">
-                  <h2 className="text-2xl font-semibold font-montserrat mb-10 text-center">
-                    Funcionalidades por Módulo
-                  </h2>
+                  <h2 className="text-2xl font-semibold mb-6">Funcionalidades do Parceiro IA</h2>
+                  <p className="text-menta mb-6">Descubra as funcionalidades poderosas que vão te ajudar a organizar e melhorar a sua rotina.</p>
                   <div className="grid md:grid-cols-2 gap-8">
-                    <div className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105">
-                      <h3 className="text-xl font-bold font-montserrat flex items-center gap-2 mb-3">
-                        <CalendarIcon className="w-6 h-6 text-menta" />
-                        Módulo 1 – Lembretes e Compromissos
-                      </h3>
-                      <ul className="list-disc pl-5 text-gray-800 space-y-1">
-                        <li>Relatório diário com tarefas e frase motivacional</li>
-                        <li>Lembrete antes de compromissos</li>
-                        <li>Relatório semanal aos domingos</li>
-                        <li>Datas especiais (aniversários)</li>
-                      </ul>
+                    {/* Funcionalidade 1 */}
+                    <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                      <h3 className="text-xl font-semibold text-escuro mb-4">Lembretes e Compromissos</h3>
+                      <p className="text-gray-800 mb-4">Nunca mais se esqueça de compromissos importantes! O Parceiro IA envia lembretes e relatórios diários diretamente no WhatsApp.</p>
+                      <img src="/Lembretes_e_compromissos.PNG" alt="Simulação de Conversa de Lembretes e Compromissos" className="w-full rounded-lg shadow-md" />
                     </div>
 
-                    <div className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105">
-                      <h3 className="text-xl font-bold font-montserrat flex items-center gap-2 mb-3">
-                        <CurrencyDollarIcon className="w-6 h-6 text-menta" />
-                        Módulo 2 – Gestão Financeira
-                      </h3>
-                      <ul className="list-disc pl-5 text-gray-800 space-y-1">
-                        <li>Registro de gastos por linguagem natural</li>
-                        <li>Classificação automática por categoria</li>
-                        <li>Relatórios quinzenais e sob demanda</li>
-                        <li>Consultas por período</li>
-                      </ul>
+                    {/* Funcionalidade 2 */}
+                    <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                      <h3 className="text-xl font-semibold text-escuro mb-4">Gestão Financeira</h3>
+                      <p className="text-gray-800 mb-4">Controle seus gastos de forma intuitiva! O Parceiro IA registra seus gastos e te ajuda a categorizar automaticamente.</p>
+                      <img src="img/funcionalidade2.png" alt="Gestão Financeira" className="w-full rounded-lg shadow-md" />
                     </div>
 
-                    <div className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105">
-                      <h3 className="text-xl font-bold font-montserrat flex items-center gap-2 mb-3">
-                        <FlagIcon className="w-6 h-6 text-menta" />
-                        Módulo 3 – Gestão de Metas
-                      </h3>
-                      <ul className="list-disc pl-5 text-gray-800 space-y-1">
-                        <li>Registro de metas por comando de voz</li>
-                        <li>Acompanhamento do progresso</li>
-                        <li>Parabenização automática ao atingir metas</li>
-                      </ul>
+                    {/* Funcionalidade 3 */}
+                    <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                      <h3 className="text-xl font-semibold text-escuro mb-4">Gestão de Metas</h3>
+                      <p className="text-gray-800 mb-4">Acompanhe o progresso das suas metas pessoais. O Parceiro IA te parabeniza automaticamente quando você atingir seus objetivos!</p>
+                      <img src="img/funcionalidade3.png" alt="Gestão de Metas" className="w-full rounded-lg shadow-md" />
                     </div>
 
-                    <div className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105">
-                      <h3 className="text-xl font-bold font-montserrat flex items-center gap-2 mb-3">
-                        <CheckCircleIcon className="w-6 h-6 text-menta" />
-                        Módulo 4 – Listas
-                      </h3>
-                      <ul className="list-disc pl-5 text-gray-800 space-y-1">
-                        <li>Listas temáticas: livros, filmes, séries, etc.</li>
-                        <li>Lista de compras</li>
-                        <li>Adicionar, remover, marcar como concluído</li>
-                      </ul>
+                    {/* Funcionalidade 4 */}
+                    <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                      <h3 className="text-xl font-semibold text-escuro mb-4">Listas</h3>
+                      <p className="text-gray-800 mb-4">Organize suas listas de tarefas, compras ou outros itens de forma simples e prática. O Parceiro IA ajuda você a gerenciar suas listas de forma eficiente.</p>
+                      <img src="img/funcionalidade4.png" alt="Listas" className="w-full rounded-lg shadow-md" />
                     </div>
                   </div>
-                  <div className="text-center mt-10">
-                    <a
-                      href="#planos"
-                      className="inline-block bg-menta text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-emerald-700 transition-transform hover:scale-105"
-                    >
-                      Veja os planos disponíveis
-                    </a>
+                </div>
+              </section>
+
+              {/* Seção de Avaliações de Clientes */}
+              <section id="avaliacoes" className="py-16 px-4 bg-gradient-to-b from-menta to-[#4c8c6d] text-white" data-aos="fade-up">
+                <div className="max-w-6xl mx-auto text-center">
+                  <h2 className="text-2xl font-semibold mb-6 text-white">O que nossos clientes dizem:</h2>
+                  <div className="grid md:grid-cols-3 gap-8">
+                    {/* Depoimento 1 */}
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                      <p className="text-gray-800 mb-4">"O Parceiro IA tem sido um verdadeiro assistente! Ele me ajuda a organizar todos os meus compromissos e finanças de forma simples e eficiente."</p>
+                      <div className="flex justify-center gap-1 text-menta">
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                      </div>
+                      <p className="text-right font-semibold text-escuro mb-0">- João Silva</p>
+                    </div>
+
+                    {/* Depoimento 2 */}
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                      <p className="text-gray-800 mb-4">"A praticidade de usar o app no WhatsApp me surpreendeu. Agora, consigo controlar minha rotina financeira de forma descomplicada."</p>
+                      <div className="flex justify-center gap-1 text-menta">
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                      </div>
+                      <p className="text-right font-semibold text-escuro mb-0">- Maria Costa</p>
+                    </div>
+
+                    {/* Depoimento 3 */}
+                    <div className="bg-white p-6 rounded-lg shadow-md">
+                      <p className="text-gray-800 mb-4">"Adoro como o Parceiro IA me ajuda a alcançar minhas metas pessoais. A funcionalidade de voz é incrível! Eu posso verificar meus dados a qualquer hora."</p>
+                      <div className="flex justify-center gap-1 text-menta">
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                        <FaStar />
+                      </div>
+                      <p className="text-right font-semibold text-escuro mb-0">- Lucas Pereira</p>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -136,12 +151,18 @@ export default function App() {
               {/* Planos */}
               <section id="planos" className="py-16 bg-white px-4 scroll-mt-24" data-aos="fade-up">
                 <div className="max-w-3xl mx-auto text-center">
-                  <h2 className="text-2xl font-semibold font-montserrat mb-6">Planos e Preços</h2>
+                  <h2 className="text-3xl font-semibold font-montserrat mb-6 text-escuro relative inline-block">
+                    <span className="absolute inset-x-0 bottom-0 border-b-4 border-menta"></span>
+                    Planos e Preços
+                  </h2>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="border rounded-lg p-6 bg-gelo shadow-sm hover:shadow-md transition">
                       <h3 className="text-xl font-bold font-montserrat mb-2">Plano Mensal</h3>
                       <p className="text-3xl font-semibold mb-4">R$ 29,99</p>
-                      <p className="text-gray-600">Pagamento recorrente mês a mês.</p>
+                      <p className="text-gray-600 mb-4">Pagamento recorrente mês a mês.</p>
+                      <ModernCTA>
+                        Assinar Mensal
+                      </ModernCTA>
                     </div>
                     <div className="relative border-2 border-menta rounded-lg p-6 bg-gelo shadow-md hover:scale-[1.02] transition-transform">
                       <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-menta text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
@@ -149,27 +170,25 @@ export default function App() {
                       </span>
                       <h3 className="text-xl font-bold font-montserrat mb-2">Plano Anual</h3>
                       <p className="text-3xl font-semibold mb-4">R$ 24,99/mês</p>
-                      <p className="text-gray-600">Pagamento único com desconto anual.</p>
+                      <p className="text-gray-600 mb-4">Pagamento único com desconto anual.</p>
+                      <ModernCTA>
+                        Assinar Anual
+                      </ModernCTA>
                     </div>
                   </div>
                 </div>
               </section>
 
               {/* Contato */}
-              <section id="contato" className="py-16 px-4 text-center scroll-mt-24 bg-gelo" data-aos="fade-up">
-                <h2 className="text-2xl font-semibold font-montserrat mb-4">Fale conosco</h2>
-                <p className="text-gray-800 mb-6">
+              <section id="contato" className="py-16 px-4 text-center scroll-mt-24 bg-gradient-to-b from-menta to-[#4c8c6d]" data-aos="fade-up">
+                <h2 className="text-2xl font-semibold font-montserrat mb-4 text-white">Fale conosco</h2>
+                <p className="text-white mb-6">
                   Quer tirar dúvidas ou contratar agora mesmo?
                 </p>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 bg-menta text-white px-6 py-3 rounded-lg hover:bg-emerald-700 transition-transform hover:scale-105 font-semibold text-lg"
-                >
+                <ModernCTA>
                   <FaWhatsapp className="w-6 h-6 animate-pulse" />
                   Falar no WhatsApp
-                </a>
+                </ModernCTA>
               </section>
 
               {/* Rodapé */}

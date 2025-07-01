@@ -7,7 +7,7 @@ module.exports = {
         montserrat: ['Montserrat', 'sans-serif'],
       },
       colors: {
-        menta: '#58b179',        // Verde Menta (primária)
+        menta: '#3a7f5c',        // Verde Menta mais escuro
         escuro: '#1f2f2b',       // Verde Escuro (secundária)
         gelo: '#f5f5f5',         // Cinza Gelo (fundo)
       },

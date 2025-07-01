@@ -25,10 +25,10 @@ export default function Header() {
 
         {/* Menu desktop */}
         <nav className="hidden md:flex space-x-6 text-sm font-medium">
-          <a href="#inicio" className="text-gray-700 hover:text-menta transition">Início</a>
-          <a href="#funcionalidades" className="text-gray-700 hover:text-menta transition">Funcionalidades</a>
-          <a href="#planos" className="text-gray-700 hover:text-menta transition">Planos</a>
-          <a href="#contato" className="text-gray-700 hover:text-menta transition">Contato</a>
+          <a href="#inicio" className="text-menta hover:text-escuro transition">Início</a>
+          <a href="#funcionalidades" className="text-menta hover:text-escuro transition">Funcionalidades</a>
+          <a href="#planos" className="text-menta hover:text-escuro transition">Planos</a>
+          <a href="#contato" className="text-menta hover:text-escuro transition">Contato</a>
         </nav>
 
         {/* Botão hamburguer / fechar */}
@@ -90,10 +90,10 @@ export default function Header() {
 
                 {/* Navegação */}
                 <nav className="flex flex-col space-y-4">
-                  <a href="#inicio" onClick={fecharMenu} className="text-gray-700 hover:text-menta">Início</a>
-                  <a href="#funcionalidades" onClick={fecharMenu} className="text-gray-700 hover:text-menta">Funcionalidades</a>
-                  <a href="#planos" onClick={fecharMenu} className="text-gray-700 hover:text-menta">Planos</a>
-                  <a href="#contato" onClick={fecharMenu} className="text-gray-700 hover:text-menta">Contato</a>
+                  <a href="#inicio" onClick={fecharMenu} className="text-menta hover:text-escuro transition">Início</a>
+                  <a href="#funcionalidades" onClick={fecharMenu} className="text-menta hover:text-escuro transition">Funcionalidades</a>
+                  <a href="#planos" onClick={fecharMenu} className="text-menta hover:text-escuro transition">Planos</a>
+                  <a href="#contato" onClick={fecharMenu} className="text-menta hover:text-escuro transition">Contato</a>
                 </nav>
               </div>
 
