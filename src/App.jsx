@@ -18,15 +18,20 @@ export default function App() {
     AOS.init({ duration: 800, once: true });
   }, []);
 
-  const ModernCTA = ({ children }) => (
-    <a
-      href="#"
-      target="_blank"
-      rel="noopener noreferrer"
+  const scrollToPlans = () => {
+    const section = document.getElementById("planos");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const ModernCTA = ({ children, onClick }) => (
+    <button
+      onClick={onClick}
       className="inline-flex items-center justify-center gap-3 px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-menta to-emerald-600 rounded-xl shadow-md hover:scale-105 hover:brightness-110 transition-transform"
     >
       {children}
-    </a>
+    </button>
   );
 
   return (
@@ -46,9 +51,9 @@ export default function App() {
                     Deixe a inteligência artificial organizar sua rotina e facilitar sua vida!
                   </p>
                   <div className="mt-6">
-                    <ModernCTA>
-                      <FaWhatsapp className="w-6 h-6 animate-pulse" />
-                      Fale agora no WhatsApp
+                    {/* Botão direcionando para Planos */}
+                    <ModernCTA onClick={scrollToPlans}>
+                      Contrate Já!
                     </ModernCTA>
                   </div>
                 </header>
@@ -74,15 +79,16 @@ export default function App() {
                     <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                       <h3 className="text-xl font-semibold text-escuro mb-4">Lembretes e Compromissos</h3>
                       <p className="text-gray-800 mb-4">Nunca mais se esqueça de compromissos importantes! O Parceiro IA envia lembretes e relatórios diários diretamente no WhatsApp.</p>
-                      <img src="/Lembretes_e_compromissos.PNG" alt="Simulação de Conversa de Lembretes e Compromissos" className="w-full rounded-lg shadow-md" />
+                      <img src="/Lembretes_e_compromissos.png" alt="Simulação de Conversa de Lembretes e Compromissos" className="w-full max-h-[650px] object-contain rounded-lg shadow-md" />
                     </div>
 
                     {/* Funcionalidade 2 */}
-                    <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                      <h3 className="text-xl font-semibold text-escuro mb-4">Gestão Financeira</h3>
-                      <p className="text-gray-800 mb-4">Controle seus gastos de forma intuitiva! O Parceiro IA registra seus gastos e te ajuda a categorizar automaticamente.</p>
-                      <img src="img/funcionalidade2.png" alt="Gestão Financeira" className="w-full rounded-lg shadow-md" />
-                    </div>
+                   <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        <h3 className="text-xl font-semibold text-escuro mb-4">Gestão Financeira</h3>
+        <p className="text-gray-800 mb-4">Controle seus gastos de forma intuitiva! O Parceiro IA registra seus gastos e te ajuda a categorizar automaticamente.</p>
+        {/* Aqui está a imagem da gestão financeira */}
+        <img src="/Gestao_financeira.png" alt="Gestão Financeira" className="w-full max-h-[650px] object-contain rounded-lg shadow-md" />
+      </div>
 
                     {/* Funcionalidade 3 */}
                     <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
