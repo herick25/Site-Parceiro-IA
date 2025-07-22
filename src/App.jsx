@@ -78,14 +78,14 @@ export default function App() {
                     {/* Funcionalidade 1 */}
                     <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                       <h3 className="text-xl font-semibold text-escuro mb-4">Lembretes e Compromissos</h3>
-                      <p className="text-gray-800 mb-4">Nunca mais se esqueça de compromissos importantes! O Parceiro IA envia lembretes e relatórios diários diretamente no WhatsApp.</p>
+                      <p className="text-gray-800 mb-4">Organize seus dias com clareza! Veja sua agenda, crie compromissos e receba lembretes no momento certo.</p>
                       <img src="/Lembretes_e_compromissos.png" alt="Simulação de Conversa de Lembretes e Compromissos" className="w-full max-h-[650px] object-contain rounded-lg shadow-md" />
                     </div>
 
                     {/* Funcionalidade 2 */}
                    <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
         <h3 className="text-xl font-semibold text-escuro mb-4">Gestão Financeira</h3>
-        <p className="text-gray-800 mb-4">Controle seus gastos de forma intuitiva! O Parceiro IA registra seus gastos e te ajuda a categorizar automaticamente.</p>
+        <p className="text-gray-800 mb-4">Controle seus gastos de forma pratica! O Parceiro IA acompanha suas despesas e mostra onde seu dinheiro está indo.</p>
         {/* Aqui está a imagem da gestão financeira */}
         <img src="/Gestao_financeira.png" alt="Gestão Financeira" className="w-full max-h-[650px] object-contain rounded-lg shadow-md" />
       </div>
@@ -93,15 +93,15 @@ export default function App() {
                     {/* Funcionalidade 3 */}
                     <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                       <h3 className="text-xl font-semibold text-escuro mb-4">Gestão de Metas</h3>
-                      <p className="text-gray-800 mb-4">Acompanhe o progresso das suas metas pessoais. O Parceiro IA te parabeniza automaticamente quando você atingir seus objetivos!</p>
-                      <img src="img/funcionalidade3.png" alt="Gestão de Metas" className="w-full rounded-lg shadow-md" />
+                      <p className="text-gray-800 mb-4">O Parceiro IA registra o progresso de suas metas, envia lembretes inteligentes e te ajuda a manter o foco, até você antigir seus objetivos.</p>
+                      <img src="/Gestao_de_metas.png" alt="Gestão de Metas" className="w-full max-h-[650px] object-contain rounded-lg shadow-md" />
                     </div>
 
                     {/* Funcionalidade 4 */}
                     <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                       <h3 className="text-xl font-semibold text-escuro mb-4">Listas</h3>
-                      <p className="text-gray-800 mb-4">Organize suas listas de tarefas, compras ou outros itens de forma simples e prática. O Parceiro IA ajuda você a gerenciar suas listas de forma eficiente.</p>
-                      <img src="img/funcionalidade4.png" alt="Listas" className="w-full rounded-lg shadow-md" />
+                      <p className="text-gray-800 mb-4">Com o Parceiro IA, você organiza listas de livros, filmes, compras, tarefas e o que mais precisar, de forma simples e sem complicações.</p>
+                      <img src="\Listas.png" alt="Listas" className="w-full max-h-[650px] object-contain rounded-lg shadow-md" />
                     </div>
                   </div>
                 </div>
