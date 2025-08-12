@@ -5,14 +5,70 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const depoimentos = [
-  { texto:"Eu vivia perdendo prazo de boleto. Com o Parceiro IA, parei de tomar susto. Em duas semanas já tava tudo redondo.", nome:"João Pedro", cargo:"Assistente Administrativo", avatar:"/avatars/joao.jpg", rating:5 },
-  { texto:"Queria algo simples pra juntar trabalho e finanças. O Parceiro IA resolveu minha vida. Uso todo dia.", nome:"Jessica Pereira", cargo:"Autônoma", avatar:"/avatars/maria.jpg", rating:5 },
-  { texto:"Agenda lotada aqui. Os lembretes são top e rapidinho já vejo tudo. Bem prático mesmo.", nome:"Debora Teixeira", cargo:"Empreendedora", avatar:"/avatars/lucas.jpg", rating:5 },
-  { texto:"Pra mim o destaque é a parte de gastos. Envio a compra no chat e pronto, já cai na categoria certinha.", nome:"Ana Souza", cargo:"Analista de Projetos", avatar:"/avatars/ana.jpg", rating:4 },
-  { texto:"A função de listas salvou nas compras e nos estudos. Rápido, sem frescura. Recomendo!", nome:"Pedro Henrique", cargo:"Estudante", avatar:"/avatars/pedro.jpg", rating:5 },
-  { texto:"Tava desconfiada no começo, mas curti. Me lembra do dentista, reunião, tudo. Não fico mais perdida.", nome:"Fernanda Rocha", cargo:"Autônoma", avatar:"/avatars/fernanda.jpg", rating:4 },
-  { texto:"O melhor é que não preciso abrir app nenhum. Mando áudio no Whats e já resolve. Simples e direto.", nome:"Rafael Souza", cargo:"Vendedor", avatar:"/avatars/rafael.jpg", rating:5 },
-  { texto:"Uso pra metas de treino e estudos. Os lembretes dão aquela motivação que faltava.", nome:"Wesley Nogueira", cargo:"Personal Trainer", avatar:"/avatars/carla.jpg", rating:5 },
+  {
+    texto:
+      "Eu vivia perdendo prazo de boleto. Com o Parceiro IA, parei de tomar susto. Em duas semanas já tava tudo redondo.",
+    nome: "João Pedro",
+    cargo: "Assistente Administrativo",
+    avatar: "/avatars/joao.jpg",
+    rating: 5,
+  },
+  {
+    texto:
+      "Queria algo simples pra juntar trabalho e finanças. O Parceiro IA resolveu minha vida. Uso todo dia.",
+    nome: "Jessica Pereira",
+    cargo: "Autônoma",
+    avatar: "/avatars/maria.jpg",
+    rating: 5,
+  },
+  {
+    texto:
+      "Agenda lotada aqui. Os lembretes são top e rapidinho já vejo tudo. Bem prático mesmo.",
+    nome: "Debora Teixeira",
+    cargo: "Empreendedora",
+    avatar: "/avatars/lucas.jpg",
+    rating: 5,
+  },
+  {
+    texto:
+      "Pra mim o destaque é a parte de gastos. Envio a compra no chat e pronto, já cai na categoria certinha.",
+    nome: "Ana Souza",
+    cargo: "Analista de Projetos",
+    avatar: "/avatars/ana.jpg",
+    rating: 4,
+  },
+  {
+    texto:
+      "A função de listas salvou nas compras e nos estudos. Rápido, sem frescura. Recomendo!",
+    nome: "Pedro Henrique",
+    cargo: "Estudante",
+    avatar: "/avatars/pedro.jpg",
+    rating: 5,
+  },
+  {
+    texto:
+      "Tava desconfiada no começo, mas curti. Me lembra do dentista, reunião, tudo. Não fico mais perdida.",
+    nome: "Fernanda Rocha",
+    cargo: "Autônoma",
+    avatar: "/avatars/fernanda.jpg",
+    rating: 4,
+  },
+  {
+    texto:
+      "O melhor é que não preciso abrir app nenhum. Mando áudio no Whats e já resolve. Simples e direto.",
+    nome: "Rafael Souza",
+    cargo: "Vendedor",
+    avatar: "/avatars/rafael.jpg",
+    rating: 5,
+  },
+  {
+    texto:
+      "Uso pra metas de treino e estudos. Os lembretes dão aquela motivação que faltava.",
+    nome: "Wesley Nogueira",
+    cargo: "Personal Trainer",
+    avatar: "/avatars/carla.jpg",
+    rating: 5,
+  },
 ];
 
 export default function Testimonials() {
@@ -20,16 +76,16 @@ export default function Testimonials() {
     dots: true,
     arrows: true,
     infinite: true,
+    speed: 600,
     autoplay: true,
     autoplaySpeed: 5000,
-    speed: 600,
-    slidesToShow: 3,              // desktop: 3
+    slidesToShow: 3,         // Desktop
     slidesToScroll: 1,
-    swipeToSlide: true,
-    adaptiveHeight: false,
+    centerMode: false,
+    centerPadding: "0px",
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } }, // tablet: 2
-      { breakpoint: 640,  settings: { slidesToShow: 1 } }, // mobile: 1
+      { breakpoint: 1024, settings: { slidesToShow: 2 } }, // Tablet
+      { breakpoint: 768,  settings: { slidesToShow: 1 } }, // Mobile
     ],
   };
 
@@ -42,20 +98,20 @@ export default function Testimonials() {
 
         <Slider {...settings}>
           {depoimentos.map((d, i) => (
-            <div key={i} className="px-2 sm:px-3 h-full">
+            <div key={i} className="px-3 h-full">
               <article
                 className="
-                  h-full max-w-[520px] mx-auto
+                  h-full min-h-[360px] md:min-h-[380px]
                   rounded-2xl bg-white shadow-sm ring-1 ring-black/5
                   p-6 flex flex-col justify-between hover:shadow-md transition-shadow
-                  min-h-[330px] sm:min-h-[360px] md:min-h-[380px]
+                  max-w-[360px] mx-auto
                 "
               >
                 <div className="flex items-center justify-center text-4xl text-black/10" aria-hidden>
                   <FaQuoteLeft />
                 </div>
 
-                <p className="mt-4 text-[13px] sm:text-[14px] md:text-[15px] leading-relaxed text-[#1f2f2b]/80 text-center line-clamp-6 md:line-clamp-5">
+                <p className="mt-4 text-[15px] leading-relaxed text-[#1f2f2b]/80 text-center line-clamp-5">
                   {d.texto}
                 </p>
 
@@ -69,7 +125,7 @@ export default function Testimonials() {
                   )}
                 </div>
 
-                <div className="mt-5 flex items-center justify-center gap-3">
+                <div className="mt-6 flex items-center justify-center gap-3">
                   <img
                     src={d.avatar}
                     alt={d.nome}
@@ -78,7 +134,6 @@ export default function Testimonials() {
                         `<div class="h-10 w-10 rounded-full bg-gradient-to-br from-[#58b179] to-emerald-600 flex items-center justify-center text-white font-semibold">${d.nome.charAt(0)}</div>`;
                     }}
                     className="h-10 w-10 rounded-full object-cover ring-1 ring-black/10"
-                    loading="lazy"
                   />
                   <div className="text-center">
                     <div className="font-semibold text-[#1f2f2b] leading-tight">{d.nome}</div>
