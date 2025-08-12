@@ -9,3 +9,19 @@ body {
 h1, h2, h3 {
   @apply text-gray-900 font-semibold;
 }
+/* Seta do react-slick na cor menta */
+.slick-prev:before,
+.slick-next:before {
+  color: #3a7f5c !important;  /* sua cor menta */
+  opacity: 1 !important;      /* deixa sólida */
+}
+/* Dots do react-slick em verde menta */
+.slick-dots li button:before {
+  color: #3a7f5c !important;
+  opacity: .45 !important;
+}
+.slick-dots li.slick-active button:before {
+  color: #3a7f5c !important;
+  opacity: 1 !important;
+}
+
