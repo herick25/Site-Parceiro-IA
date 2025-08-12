@@ -2,44 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-gray-50 text-gray-800 font-sans;
-}
+body { @apply bg-gray-50 text-gray-800 font-sans; }
+h1, h2, h3 { @apply text-gray-900 font-semibold; }
 
-h1, h2, h3 {
-  @apply text-gray-900 font-semibold;
-}
+/* Setas e dots em menta */
+.slick-prev:before, .slick-next:before { color:#3a7f5c !important; opacity:1 !important; }
+.slick-dots li button:before { color:#3a7f5c !important; opacity:.45 !important; }
+.slick-dots li.slick-active button:before { color:#3a7f5c !important; opacity:1 !important; }
 
-/* ========= Ajustes de layout do Slick para alturas iguais ========= */
-.slick-track {
-  display: flex !important;              /* slides na mesma altura */
-}
-.slick-slide {
-  height: auto !important;               /* deixa o slide crescer conforme o card */
-}
-.slick-slide > div {
-  height: 100%;                          /* wrapper do slide ocupa 100% */
-}
-
-/* ========= Setas e dots (verde menta) ========= */
-.slick-prev:before,
-.slick-next:before {
-  color: #3a7f5c !important;  /* cor menta */
-  opacity: 1 !important;
-}
-
-.slick-dots li button:before {
-  color: #3a7f5c !important;
-  opacity: .45 !important;
-}
-.slick-dots li.slick-active button:before {
-  color: #3a7f5c !important;
-  opacity: 1 !important;
-}
-
-/* opcional: aproxima os dots do card em mobile */
-@media (max-width: 640px) {
-  .slick-dots {
-    bottom: -28px;
-  }
-}
+/* Alturas consistentes */
+.slick-track { display:flex !important; }
+.slick-slide { height: inherit !important; }
+.slick-slide > div { height: 100%; }
