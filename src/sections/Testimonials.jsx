@@ -74,17 +74,19 @@ const depoimentos = [
 export default function Testimonials() {
   const settings = {
     dots: true,
+    arrows: true,
     infinite: true,
     autoplay: true,
     autoplaySpeed: 5000,
     speed: 600,
     slidesToShow: 3,
     slidesToScroll: 1,
+    swipeToSlide: true,
+    adaptiveHeight: false, // manter falso para não pular a altura do container
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
       { breakpoint: 640, settings: { slidesToShow: 1 } },
     ],
-    adaptiveHeight: false,
   };
 
   return (
@@ -99,22 +101,32 @@ export default function Testimonials() {
             <div key={i} className="px-3 h-full">
               <article
                 className="
-                  h-full min-h-[360px] md:min-h-[380px]
-                  rounded-2xl bg-white shadow-sm ring-1 ring-black/5
-                  p-6 flex flex-col justify-between hover:shadow-md transition-shadow
+                  h-full rounded-2xl bg-white shadow-sm ring-1 ring-black/5
+                  p-6 flex flex-col hover:shadow-md transition-shadow
                 "
               >
+                {/* ícone */}
                 <div className="flex items-center justify-center text-4xl text-black/10" aria-hidden>
                   <FaQuoteLeft />
                 </div>
 
-                <p className="mt-4 text-[15px] leading-relaxed text-[#1f2f2b]/80 text-center line-clamp-5">
+                {/* texto com altura mínima para padronizar */}
+                <p
+                  className="
+                    mt-4 text-[15px] leading-relaxed text-[#1f2f2b]/80 text-center
+                    line-clamp-5
+                    min-h-[88px] md:min-h-[96px]
+                  "
+                >
                   {d.texto}
                 </p>
 
-                {/* estrelas dinâmicas */}
-                <div className="mt-4 flex items-center justify-center gap-1" aria-label={`avaliação ${d.rating} de 5`}>
-                  {[1,2,3,4,5].map(n =>
+                {/* estrelas */}
+                <div
+                  className="mt-4 flex items-center justify-center gap-1"
+                  aria-label={`avaliação ${d.rating} de 5`}
+                >
+                  {[1, 2, 3, 4, 5].map((n) =>
                     n <= d.rating ? (
                       <FaStar key={n} className="h-5 w-5 text-[#58b179]" />
                     ) : (
@@ -123,7 +135,8 @@ export default function Testimonials() {
                   )}
                 </div>
 
-                <div className="mt-6 flex items-center justify-center gap-3">
+                {/* rodapé sempre no fundo */}
+                <div className="mt-auto pt-6 flex items-center justify-center gap-3">
                   <img
                     src={d.avatar}
                     alt={d.nome}

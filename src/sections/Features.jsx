@@ -83,7 +83,7 @@ export default function Features() {
           Funcionalidades do Parceiro IA
         </h2>
         <p className="text-menta text-center mt-2">
-          Veja o que cada módulo faz — de forma objetiva e prática.
+          Veja como cada módulo funciona, de forma objetiva e prática.
         </p>
 
         <div className="mt-10 space-y-8">
