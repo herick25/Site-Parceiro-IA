@@ -5,73 +5,33 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const depoimentos = [
-  {
-    texto:
-      "Eu vivia perdendo prazo de boleto. Com o Parceiro IA, parei de tomar susto. Em duas semanas já tava tudo redondo.",
-    nome: "João Pedro",
-    cargo: "Assistente Administrativo",
-    avatar: "/avatars/joao.jpg",
-    rating: 5,
-  },
-  {
-    texto:
-      "Queria algo simples pra juntar trabalho e finanças. O Parceiro IA resolveu minha vida. Uso todo dia.",
-    nome: "Jessica Pereira",
-    cargo: "Autônoma",
-    avatar: "/avatars/maria.jpg",
-    rating: 5,
-  },
-  {
-    texto:
-      "Agenda lotada aqui. Os lembretes são top e rapidinho já vejo tudo. Bem prático mesmo.",
-    nome: "Debora Teixeira",
-    cargo: "Empreendedora",
-    avatar: "/avatars/lucas.jpg",
-    rating: 5,
-  },
-  {
-    texto:
-      "Pra mim o destaque é a parte de gastos. Envio a compra no chat e pronto, já cai na categoria certinha.",
-    nome: "Ana Souza",
-    cargo: "Analista de Projetos",
-    avatar: "/avatars/ana.jpg",
-    rating: 4,
-  },
-  {
-    texto:
-      "A função de listas salvou nas compras e nos estudos. Rápido, sem frescura. Recomendo!",
-    nome: "Pedro Henrique",
-    cargo: "Estudante",
-    avatar: "/avatars/pedro.jpg",
-    rating: 5,
-  },
-  {
-    texto:
-      "Tava desconfiada no começo, mas curti. Me lembra do dentista, reunião, tudo. Não fico mais perdida.",
-    nome: "Fernanda Rocha",
-    cargo: "Autônoma",
-    avatar: "/avatars/fernanda.jpg",
-    rating: 4,
-  },
-  {
-    texto:
-      "O melhor é que não preciso abrir app nenhum. Mando áudio no Whats e já resolve. Simples e direto.",
-    nome: "Rafael Souza",
-    cargo: "Vendedor",
-    avatar: "/avatars/rafael.jpg",
-    rating: 5,
-  },
-  {
-    texto:
-      "Uso pra metas de treino e estudos. Os lembretes dão aquela motivação que faltava.",
-    nome: "Wesley Nogueira",
-    cargo: "Personal Trainer",
-    avatar: "/avatars/carla.jpg",
-    rating: 5,
-  },
+  { texto: "Eu vivia perdendo prazo de boleto. Com o Parceiro IA, parei de tomar susto. Em duas semanas já tava tudo redondo.", nome: "João Pedro", cargo: "Assistente Administrativo", avatar: "/avatars/joao.jpg", rating: 5 },
+  { texto: "Queria algo simples pra juntar trabalho e finanças. O Parceiro IA resolveu minha vida. Uso todo dia.", nome: "Jessica Pereira", cargo: "Autônoma", avatar: "/avatars/maria.jpg", rating: 5 },
+  { texto: "Agenda lotada aqui. Os lembretes são top e rapidinho já vejo tudo. Bem prático mesmo.", nome: "Debora Teixeira", cargo: "Empreendedora", avatar: "/avatars/lucas.jpg", rating: 5 },
+  { texto: "Pra mim o destaque é a parte de gastos. Envio a compra no chat e pronto, já cai na categoria certinha.", nome: "Ana Souza", cargo: "Analista de Projetos", avatar: "/avatars/ana.jpg", rating: 4 },
+  { texto: "A função de listas salvou nas compras e nos estudos. Rápido, sem frescura. Recomendo!", nome: "Pedro Henrique", cargo: "Estudante", avatar: "/avatars/pedro.jpg", rating: 5 },
+  { texto: "Tava desconfiada no começo, mas curti. Me lembra do dentista, reunião, tudo. Não fico mais perdida.", nome: "Fernanda Rocha", cargo: "Autônoma", avatar: "/avatars/fernanda.jpg", rating: 4 },
+  { texto: "O melhor é que não preciso abrir app nenhum. Mando áudio no Whats e já resolve. Simples e direto.", nome: "Rafael Souza", cargo: "Vendedor", avatar: "/avatars/rafael.jpg", rating: 5 },
+  { texto: "Uso pra metas de treino e estudos. Os lembretes dão aquela motivação que faltava.", nome: "Wesley Nogueira", cargo: "Personal Trainer", avatar: "/avatars/carla.jpg", rating: 5 },
 ];
 
 export default function Testimonials() {
+  // define 1 no mobile, 2 no tablet, 3 no desktop
+  const calcSlides = () => {
+    const w = typeof window !== "undefined" ? window.innerWidth : 1200;
+    if (w <= 768) return 1;   // mobile
+    if (w <= 1024) return 2;  // tablet
+    return 3;                 // desktop
+  };
+
+  const [slidesToShow, setSlidesToShow] = React.useState(calcSlides());
+
+  React.useEffect(() => {
+    const onResize = () => setSlidesToShow(calcSlides());
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   const settings = {
     dots: true,
     arrows: true,
@@ -79,14 +39,16 @@ export default function Testimonials() {
     speed: 600,
     autoplay: true,
     autoplaySpeed: 5000,
-    slidesToShow: 3,         // Desktop
+    slidesToShow,            // <- mandatório
     slidesToScroll: 1,
     centerMode: false,
     centerPadding: "0px",
+    // mantemos responsive como backup
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } }, // Tablet
-      { breakpoint: 768,  settings: { slidesToShow: 1 } }, // Mobile
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768,  settings: { slidesToShow: 1 } },
     ],
+    adaptiveHeight: false,
   };
 
   return (
@@ -96,7 +58,8 @@ export default function Testimonials() {
           O que nossos clientes dizem:
         </h2>
 
-        <Slider {...settings}>
+        {/* key força o react-slick re-inicializar quando muda a quantidade */}
+        <Slider {...settings} key={slidesToShow}>
           {depoimentos.map((d, i) => (
             <div key={i} className="px-3 h-full">
               <article
