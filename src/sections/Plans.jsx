@@ -86,14 +86,26 @@ export default function Plans() {
 
   const sliderSettings = {
     dots: true,
+    arrows: true,
     infinite: false,
-    speed: 500,
-    slidesToShow: 3,
+    speed: 450,
+    slidesToShow: 3,          // desktop padrão
     slidesToScroll: 1,
+    centerMode: false,
+    adaptiveHeight: false,
     responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 3 } },
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768,  settings: { slidesToShow: 1 } },
+      // <= 1280: mantém 3
+      { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } },
+      {
+        breakpoint: 768,    // mobile
+        settings: {
+          slidesToShow: 1,
+          arrows: false,
+          adaptiveHeight: true,
+          centerMode: true,
+          centerPadding: "16px",
+        },
+      },
     ],
   };
 
@@ -110,9 +122,9 @@ export default function Plans() {
         {/* Header */}
         <div className="mb-12">
           <h2 className="text-center text-3xl sm:text-5xl font-extrabold font-poppins text-escuro">
-            Escolha o Parceiro{" "}
+            Quero transformar minha{" "}
             <span className="bg-gradient-to-r from-menta to-emerald-600 bg-clip-text text-transparent">
-              Ideal para você!👇🏻 
+              rotina e minhas finanças
             </span>
           </h2>
         </div>
@@ -120,15 +132,15 @@ export default function Plans() {
         {/* Carrossel */}
         <Slider {...sliderSettings}>
           {plans.map((plan) => (
-            <div key={plan.key} className="px-4">
+            <div key={plan.key} className="px-3">
               <div
                 className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
                             ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
-                            grid grid-rows-[auto_auto_1fr_auto_auto_auto] gap-4 h-[560px]`}
+                            flex flex-col gap-4 h-auto w-full max-w-[400px] mx-auto`}
               >
                 {/* Badge apenas no Premium */}
                 {plan.highlight && (
-                  <span className="absolute left-1/2 top-3 -translate-x-1/2 bg-menta text-white text-xs font-semibold px-4 py-1 rounded-full shadow">
+                  <span className="absolute left-4 -top-3 bg-menta text-white text-xs font-semibold px-4 py-1 rounded-full shadow">
                     Mais vantajoso
                   </span>
                 )}
@@ -140,11 +152,17 @@ export default function Plans() {
                 </h3>
 
                 {/* Preço + brinde dentro do bloco */}
-                <div className="rounded-2xl border border-menta/30 bg-gelo p-6 text-center min-h-[120px] flex flex-col items-center justify-center">
+                <div className="rounded-2xl border border-menta/30 bg-gelo p-6 text-center flex flex-col items-center justify-center">
                   <div className="text-sm text-gray-600 mb-1">A partir de</div>
                   <div className="text-3xl md:text-4xl font-extrabold font-poppins text-escuro whitespace-nowrap leading-tight tracking-tight">
                     {plan.price}
                   </div>
+
+                  {/* Mensal no bloco para reforço visual no mobile */}
+                  <p className="text-xs text-gray-500 mt-2">
+                    Mensal disponível por{" "}
+                    <span className="font-semibold text-escuro">{plan.monthly}</span>
+                  </p>
 
                   {/* Brinde destacado */}
                   <span className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-menta bg-menta/10 ring-1 ring-menta/20 px-2.5 py-1 rounded-full">
@@ -153,18 +171,18 @@ export default function Plans() {
                 </div>
 
                 {/* Features */}
-                <ul className="space-y-2 text-left px-1 overflow-hidden">
+                <ul className="space-y-2 text-left px-1">
                   {plan.features.map((f, i) => (
                     <Feature key={i}>{f}</Feature>
                   ))}
                 </ul>
 
                 {/* CTA */}
-                <div className="flex justify-center items-end">
+                <div className="flex justify-center">
                   <ModernCTA>{plan.cta}</ModernCTA>
                 </div>
 
-                {/* Nota mensal no rodapé do card */}
+                {/* Nota mensal no rodapé do card (reforço) */}
                 <p className="text-xs text-gray-500 text-center">
                   Mensal disponível por{" "}
                   <span className="font-semibold text-escuro">{plan.monthly}</span>
