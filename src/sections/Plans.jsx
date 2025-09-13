@@ -84,19 +84,30 @@ export default function Plans() {
     },
   ];
 
-  // Mantém o desktop como era (3), tablet 2, mobile 1.
+  // Desktop: 3 (sem mudanças)
+  // Tablet: 2 (sem mudanças)
+  // Mobile: 1, centralizado, sem variableWidth
   const sliderSettings = {
     dots: true,
     arrows: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 3,           // PC igual
     slidesToScroll: 1,
     centerMode: false,
     adaptiveHeight: false,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } },
-      { breakpoint: 768,  settings: { slidesToShow: 1, arrows: false, centerMode: false } },
+      { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } }, // tablet igual
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          arrows: false,
+          centerMode: false,
+          variableWidth: false,
+          adaptiveHeight: true,
+        },
+      },
     ],
   };
 
@@ -123,17 +134,18 @@ export default function Plans() {
         {/* Carrossel */}
         <Slider {...sliderSettings}>
           {plans.map((plan) => (
-            <div key={plan.key} className="px-2 md:px-4 w-full">
+            // width total no mobile para evitar esmagar; no desktop/tablet segue como antes
+            <div key={plan.key} className="px-3 w-full max-w-[420px] md:max-w-none mx-auto">
               <div
                 className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
-                  ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
-                  grid grid-rows-[auto_auto_1fr_auto_auto_auto] gap-4 
-                  w-full mx-auto
-                  h-auto md:h-[560px]`}  /* mobile: auto | desktop: altura original */
+                            ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
+                            grid grid-rows-[auto_auto_1fr_auto_auto] gap-4
+                            w-full
+                            h-auto md:h-[520px]`}  // mobile: natural; PC: altura como antes
               >
-                {/* Badge apenas no Premium (posição preservada no desktop) */}
+                {/* Badge apenas no Premium */}
                 {plan.highlight && (
-                  <span className="absolute left-1/2 md:left-1/2 md:-translate-x-1/2 -translate-x-1/2 top-3 bg-menta text-white text-xs font-semibold px-4 py-1 rounded-full shadow">
+                  <span className="absolute left-1/2 -translate-x-1/2 top-3 bg-menta text-white text-xs font-semibold px-4 py-1 rounded-full shadow">
                     Mais vantajoso
                   </span>
                 )}
@@ -144,14 +156,14 @@ export default function Plans() {
                   {plan.title}
                 </h3>
 
-                {/* Preço + brinde dentro do bloco (como você queria) */}
+                {/* Preço (com brinde dentro) */}
                 <div className="rounded-2xl border border-menta/30 bg-gelo p-6 text-center min-h-[100px] flex flex-col items-center justify-center">
                   <div className="text-sm text-gray-600 mb-1">A partir de</div>
                   <div className="text-3xl md:text-4xl font-extrabold font-poppins text-escuro whitespace-nowrap leading-tight tracking-tight">
                     {plan.price}
                   </div>
 
-                  {/* Mensal (reforço no bloco) */}
+                  {/* Mensal dentro do bloco */}
                   <p className="text-xs text-gray-500 mt-2">
                     Mensal disponível por{" "}
                     <span className="font-semibold text-escuro">{plan.monthly}</span>
@@ -164,7 +176,7 @@ export default function Plans() {
                 </div>
 
                 {/* Features */}
-                <ul className="space-y-2 text-left px-1 overflow-visible">
+                <ul className="space-y-2 text-left px-1">
                   {plan.features.map((f, i) => (
                     <Feature key={i}>{f}</Feature>
                   ))}
@@ -175,7 +187,7 @@ export default function Plans() {
                   <ModernCTA>{plan.cta}</ModernCTA>
                 </div>
 
-                {/* Nota mensal no rodapé do card */}
+                {/* Mensal no rodapé (reforço) */}
                 <p className="text-xs text-gray-500 text-center">
                   Mensal disponível por{" "}
                   <span className="font-semibold text-escuro">{plan.monthly}</span>
