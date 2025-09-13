@@ -4,17 +4,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Roboto", "sans-serif"],
-        montserrat: ["Montserrat", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],   // padrão do corpo
+        inter: ["Inter", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],     // se quiser usar em outras partes
       },
       colors: {
-        menta: "#3a7f5c",   // Verde Menta mais escuro
-        escuro: "#1f2f2b",  // Verde Escuro (secundária)
-        gelo: "#f5f5f5",    // Cinza Gelo (fundo)
+        menta: "#3a7f5c",   // Verde Menta
+        escuro: "#1f2f2b",  // Verde Escuro
+        gelo: "#f5f5f5",    // Cinza Gelo
       },
     },
   },
-  plugins: [
-    require("@tailwindcss/line-clamp"),
-  ],
+  plugins: [],
 }
