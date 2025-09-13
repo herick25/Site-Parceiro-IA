@@ -10,6 +10,10 @@ import {
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
 
+// importa estilos do slick (não altera layout do PC)
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 export default function Plans() {
   const PRICES = {
     premium: { monthly: "R$ 29,90/mês", annual: "R$ 24,90/mês" },
@@ -86,7 +90,7 @@ export default function Plans() {
 
   // Desktop: 3 (sem mudanças)
   // Tablet: 2 (sem mudanças)
-  // Mobile: 1, centralizado, sem variableWidth
+  // Mobile: 1, centralizado, largura 100% e swipe suave
   const sliderSettings = {
     dots: true,
     arrows: true,
@@ -96,16 +100,27 @@ export default function Plans() {
     slidesToScroll: 1,
     centerMode: false,
     adaptiveHeight: false,
+    mobileFirst: true,         // prioriza regras mobile
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } }, // tablet igual
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
           arrows: false,
           centerMode: false,
+          centerPadding: "0px",
           variableWidth: false,
-          adaptiveHeight: true,
+          swipe: true,
+          swipeToSlide: true,
+          touchMove: true,
+          draggable: true,
+          touchThreshold: 6,
+          cssEase: "ease-out",
+          speed: 350,
+          adaptiveHeight: false,
+          initialSlide: 0,
         },
       },
     ],
@@ -132,16 +147,16 @@ export default function Plans() {
         </div>
 
         {/* Carrossel */}
-        <Slider {...sliderSettings}>
+        <Slider {...sliderSettings} className="plans-slider" key={plans.length}>
           {plans.map((plan) => (
-            // width total no mobile para evitar esmagar; no desktop/tablet segue como antes
-            <div key={plan.key} className="px-3 w-full max-w-[420px] md:max-w-none mx-auto">
+            {/* MOBILE = largura total; DESKTOP/TABLET = como antes */}
+            <div key={plan.key} className="px-0 sm:px-3 w-full max-w-full md:max-w-none mx-auto">
               <div
                 className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
                             ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
                             grid grid-rows-[auto_auto_1fr_auto_auto] gap-4
                             w-full
-                            h-auto md:h-[520px]`}  // mobile: natural; PC: altura como antes
+                            h-auto md:h-[520px]`}
               >
                 {/* Badge apenas no Premium */}
                 {plan.highlight && (
