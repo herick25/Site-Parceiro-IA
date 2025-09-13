@@ -10,10 +10,6 @@ import {
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
 
-// (mantemos os estilos do slick importados)
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 export default function Plans() {
   const PRICES = {
     premium: { monthly: "R$ 29,90/mês", annual: "R$ 24,90/mês" },
@@ -88,39 +84,28 @@ export default function Plans() {
     },
   ];
 
-  // Desktop: 3 | Tablet: 2 | Mobile: 1 (sem alterar desktop/tablet)
+  // Desktop: 3 (sem mudanças)
+  // Tablet: 2 (sem mudanças)
+  // Mobile: 1, centralizado, sem variableWidth
   const sliderSettings = {
     dots: true,
     arrows: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 3,           // PC igual
     slidesToScroll: 1,
     centerMode: false,
     adaptiveHeight: false,
-    mobileFirst: true,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } },
+      { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } }, // tablet igual
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
           arrows: false,
           centerMode: false,
-          centerPadding: "0px",
           variableWidth: false,
-          rows: 1,
-          slidesPerRow: 1,
-          swipe: true,
-          swipeToSlide: true,
-          touchMove: true,
-          draggable: true,
-          touchThreshold: 6,
-          cssEase: "ease-out",
-          speed: 350,
-          adaptiveHeight: false,
-          initialSlide: 0,
+          adaptiveHeight: true,
         },
       },
     ],
@@ -147,60 +132,63 @@ export default function Plans() {
         </div>
 
         {/* Carrossel */}
-        <Slider {...sliderSettings} className="plans-slider" key={plans.length}>
+        <Slider {...sliderSettings}>
           {plans.map((plan) => (
-            <div key={plan.key} className="px-0 sm:px-3 w-full max-w-full md:max-w-none mx-auto">
+            // width total no mobile para evitar esmagar; no desktop/tablet segue como antes
+            <div key={plan.key} className="px-3 w-full max-w-[420px] md:max-w-none mx-auto">
               <div
-                className={`relative overflow-visible rounded-2xl
-                  bg-white
-                  ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
-                  grid grid-rows-[auto_auto_1fr_auto_auto]
-                  gap-3 md:gap-4
-                  w-full
-                  /* MOBILE: reduzir altura; DESKTOP: manter */
-                  h-full min-h-[500px] md:min-h-0
-                  p-6 pt-10 md:p-8 md:pt-12`}
+                className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
+                            ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
+                            grid grid-rows-[auto_auto_1fr_auto_auto] gap-4
+                            w-full
+                            h-auto md:h-[520px]`}  // mobile: natural; PC: altura como antes
               >
+                {/* Badge apenas no Premium */}
                 {plan.highlight && (
-                  <span className="absolute left-1/2 -translate-x-1/2 top-2 md:top-3 bg-menta text-white text-xs font-semibold px-4 py-1 rounded-full shadow">
+                  <span className="absolute left-1/2 -translate-x-1/2 top-3 bg-menta text-white text-xs font-semibold px-4 py-1 rounded-full shadow">
                     Mais vantajoso
                   </span>
                 )}
 
-                {/* Título (menor no mobile) */}
-                <h3 className="text-lg md:text-xl font-poppins font-semibold text-escuro flex items-center gap-2 justify-center text-center">
-                  {plan.icon && <plan.icon className="w-5 h-5 md:w-6 md:h-6 text-escuro/70" />}
+                {/* Título */}
+                <h3 className="text-xl font-poppins font-semibold text-escuro flex items-center gap-2 justify-center text-center">
+                  {plan.icon && <plan.icon className="w-6 h-6 text-escuro/70" />}
                   {plan.title}
                 </h3>
 
-                {/* Preço (tipografia e padding menores no mobile) */}
-                <div className="rounded-2xl border border-menta/30 bg-gelo p-5 md:p-6 text-center min-h-[88px] md:min-h-[100px] flex flex-col items-center justify-center">
-                  <div className="text-xs md:text-sm text-gray-600 mb-1">A partir de</div>
-                  <div className="text-2xl md:text-4xl font-extrabold font-poppins text-escuro whitespace-nowrap leading-tight tracking-tight">
+                {/* Preço (com brinde dentro) */}
+                <div className="rounded-2xl border border-menta/30 bg-gelo p-6 text-center min-h-[100px] flex flex-col items-center justify-center">
+                  <div className="text-sm text-gray-600 mb-1">A partir de</div>
+                  <div className="text-3xl md:text-4xl font-extrabold font-poppins text-escuro whitespace-nowrap leading-tight tracking-tight">
                     {plan.price}
                   </div>
-                  <p className="text-[11px] md:text-xs text-gray-500 mt-2">
+
+                  {/* Mensal dentro do bloco */}
+                  <p className="text-xs text-gray-500 mt-2">
                     Mensal disponível por{" "}
                     <span className="font-semibold text-escuro">{plan.monthly}</span>
                   </p>
-                  <span className="mt-2 inline-flex items-center gap-1 text-[11px] md:text-xs font-medium text-menta bg-menta/10 ring-1 ring-menta/20 px-2 md:px-2.5 py-1 rounded-full">
+
+                  {/* Brinde destacado */}
+                  <span className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-menta bg-menta/10 ring-1 ring-menta/20 px-2.5 py-1 rounded-full">
                     Receba de brinde o Parceiro Listas 🎁
                   </span>
                 </div>
 
-                {/* Features (margens menores no mobile) */}
+                {/* Features */}
                 <ul className="space-y-2 text-left px-1">
                   {plan.features.map((f, i) => (
                     <Feature key={i}>{f}</Feature>
                   ))}
                 </ul>
 
-                {/* CTA (altura do botão igual; padding do card já reduziu) */}
+                {/* CTA */}
                 <div className="flex justify-center items-end">
                   <ModernCTA>{plan.cta}</ModernCTA>
                 </div>
 
-                <p className="text-[11px] md:text-xs text-gray-500 text-center">
+                {/* Mensal no rodapé (reforço) */}
+                <p className="text-xs text-gray-500 text-center">
                   Mensal disponível por{" "}
                   <span className="font-semibold text-escuro">{plan.monthly}</span>
                 </p>
@@ -209,6 +197,7 @@ export default function Plans() {
           ))}
         </Slider>
 
+        {/* Rodapé */}
         <div className="mt-12 text-sm text-gray-500 text-center font-inter">
           7 dias de garantia. Sem fidelidade.
         </div>
