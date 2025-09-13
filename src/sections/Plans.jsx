@@ -124,9 +124,9 @@ export default function Plans() {
         {/* Header */}
         <div className="mb-12">
           <h2 className="text-center text-3xl sm:text-5xl font-extrabold font-poppins text-escuro">
-            Quero transformar minha{" "}
+            Escolha o Parceiro{" "}
             <span className="bg-gradient-to-r from-menta to-emerald-600 bg-clip-text text-transparent">
-              rotina e minhas finanças
+              ideal para você!
             </span>
           </h2>
         </div>
