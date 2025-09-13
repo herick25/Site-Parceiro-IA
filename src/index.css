@@ -14,7 +14,7 @@ h1, h2, h3 {
 }
 
 /* ======================== */
-/* Slick: setas e dots      */
+/* Slick: setas e dots (geral) */
 /* ======================== */
 .slick-prev:before,
 .slick-next:before {
@@ -47,6 +47,28 @@ h1, h2, h3 {
   .slick-track  { display: flex; }
   .slick-slide  { width: 100% !important; height: auto; }
   .slick-slide > div { width: 100%; height: 100%; }
+
+  /* Dots maiores e com área clicável, apenas para os planos */
+  .plans-slider .slick-dots {
+    margin-top: 16px;
+  }
+  .plans-slider .slick-dots li {
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
+  }
+  .plans-slider .slick-dots li button {
+    width: 12px;
+    height: 12px;
+  }
+  .plans-slider .slick-dots li button:before {
+    font-size: 12px;         /* maior */
+    opacity: .35 !important; /* mais suave */
+  }
+  .plans-slider .slick-dots li.slick-active button:before {
+    opacity: 1 !important;
+    transform: scale(1.2);   /* leve destaque */
+  }
 }
 
 /* ============================= */

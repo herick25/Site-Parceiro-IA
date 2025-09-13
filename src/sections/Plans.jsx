@@ -86,7 +86,7 @@ export default function Plans() {
 
   // Desktop: 3 (igual)
   // Tablet: 2 (igual)
-  // Mobile: 1 por vez, largura total, sem “pulos” de altura
+  // Mobile: 1 por vez, largura total, swipe suave e dots destacados
   const sliderSettings = {
     dots: true,
     arrows: true,
@@ -109,7 +109,13 @@ export default function Plans() {
           variableWidth: false,
           rows: 1,
           slidesPerRow: 1,
+          swipe: true,
           swipeToSlide: true,
+          touchMove: true,
+          draggable: true,
+          touchThreshold: 12,
+          cssEase: "ease-out",
+          speed: 400,
           adaptiveHeight: false, // estável no mobile
           initialSlide: 0,
         },
@@ -137,16 +143,18 @@ export default function Plans() {
           </h2>
         </div>
 
-        {/* Carrossel */}
-        <Slider {...sliderSettings}>
+        {/* Carrossel (classe para estilizar dots no mobile) */}
+        <Slider {...sliderSettings} className="plans-slider">
           {plans.map((plan) => (
-            // MOBILE: ocupa 100% da largura | DESKTOP: mantém como estava
+            // MOBILE: ocupa 100% da largura; DESKTOP: mantém como estava
             <div key={plan.key} className="px-0 sm:px-3 w-full max-w-full md:max-w-none mx-auto">
               <div
                 className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
                             ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
                             grid grid-rows-[auto_auto_1fr_auto_auto] gap-4
                             w-full
+                            /* Igualar alturas no mobile e manter no desktop */
+                            min-h-[560px] md:min-h-0
                             h-auto md:h-[520px]`}
               >
                 {/* Badge apenas no Premium */}
