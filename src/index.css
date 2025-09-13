@@ -14,21 +14,21 @@ h1, h2, h3 {
 }
 
 /* ======================== */
-/* Slick: setas e dots (geral) */
+/* Slick: setas e dots      */
 /* ======================== */
 .slick-prev:before,
 .slick-next:before {
-  color: #3a7f5c !important;  /* menta */
+  color: #3a7f5c !important;
   opacity: 1 !important;
 }
 
 .slick-dots li button:before {
-  color: #3a7f5c !important;  /* menta */
+  color: #3a7f5c !important;
   opacity: .45 !important;
 }
 
 .slick-dots li.slick-active button:before {
-  color: #3a7f5c !important;  /* menta */
+  color: #3a7f5c !important;
   opacity: 1 !important;
 }
 
@@ -39,16 +39,17 @@ h1, h2, h3 {
 
 /* ============================= */
 /*  Ajuste específico para MOBILE */
-/*  (não altera o desktop)        */
 /* ============================= */
 @media (max-width: 767px) {
-  .slick-slider { overflow: hidden; }
-  .slick-list   { overflow: hidden; }
-  .slick-track  { display: flex; }
-  .slick-slide  { width: 100% !important; height: auto; }
-  .slick-slide > div { width: 100%; height: 100%; }
+  .plans-slider .slick-list   { overflow: hidden; }
+  .plans-slider .slick-track  { display: flex !important; }
+  .plans-slider .slick-slide  { width: 100% !important; flex: 0 0 100% !important; }
+  .plans-slider .slick-slide > div { width: 100% !important; height: 100% !important; }
 
-  /* Dots maiores e com área clicável, apenas para os planos */
+  /* Garantir render inicial */
+  .plans-slider.slick-initialized .slick-slide { display: block !important; }
+
+  /* Dots mais visíveis */
   .plans-slider .slick-dots {
     margin-top: 16px;
   }
@@ -62,12 +63,12 @@ h1, h2, h3 {
     height: 12px;
   }
   .plans-slider .slick-dots li button:before {
-    font-size: 12px;         /* maior */
-    opacity: .35 !important; /* mais suave */
+    font-size: 12px;
+    opacity: .35 !important;
   }
   .plans-slider .slick-dots li.slick-active button:before {
     opacity: 1 !important;
-    transform: scale(1.2);   /* leve destaque */
+    transform: scale(1.2);
   }
 }
 
@@ -76,9 +77,9 @@ h1, h2, h3 {
 /* ============================= */
 @keyframes subtle-float {
   0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); } /* sobe/ desce mais */
+  50%      { transform: translateY(-12px); }
 }
 
 .animate-subtle-float {
-  animation: subtle-float 2s ease-in-out infinite; /* ciclo mais rápido */
+  animation: subtle-float 2s ease-in-out infinite;
 }

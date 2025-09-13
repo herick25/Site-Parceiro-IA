@@ -10,6 +10,10 @@ import {
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
 
+// Importa os estilos do slick
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 export default function Plans() {
   const PRICES = {
     premium: { monthly: "R$ 29,90/mês", annual: "R$ 24,90/mês" },
@@ -84,20 +88,18 @@ export default function Plans() {
     },
   ];
 
-  // Desktop: 3 (igual)
-  // Tablet: 2 (igual)
-  // Mobile: 1 por vez, largura total, swipe suave e dots destacados
   const sliderSettings = {
     dots: true,
     arrows: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,           // PC igual
+    slidesToShow: 3,
     slidesToScroll: 1,
     centerMode: false,
     adaptiveHeight: false,
+    mobileFirst: true,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } }, // tablet igual
+      { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } },
       {
         breakpoint: 768,
         settings: {
@@ -113,10 +115,10 @@ export default function Plans() {
           swipeToSlide: true,
           touchMove: true,
           draggable: true,
-          touchThreshold: 12,
+          touchThreshold: 6,
           cssEase: "ease-out",
-          speed: 400,
-          adaptiveHeight: false, // estável no mobile
+          speed: 350,
+          adaptiveHeight: false,
           initialSlide: 0,
         },
       },
@@ -143,65 +145,53 @@ export default function Plans() {
           </h2>
         </div>
 
-        {/* Carrossel (classe para estilizar dots no mobile) */}
-        <Slider {...sliderSettings} className="plans-slider">
+        {/* Carrossel */}
+        <Slider {...sliderSettings} className="plans-slider" key={plans.length}>
           {plans.map((plan) => (
-            // MOBILE: ocupa 100% da largura; DESKTOP: mantém como estava
             <div key={plan.key} className="px-0 sm:px-3 w-full max-w-full md:max-w-none mx-auto">
               <div
                 className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
-                            ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
-                            grid grid-rows-[auto_auto_1fr_auto_auto] gap-4
-                            w-full
-                            /* Igualar alturas no mobile e manter no desktop */
-                            min-h-[560px] md:min-h-0
-                            h-auto md:h-[520px]`}
+                  ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
+                  grid grid-rows-[auto_auto_1fr_auto_auto] gap-4
+                  w-full
+                  h-full min-h-[560px] md:min-h-0
+                  md:h-[520px]`}
               >
-                {/* Badge apenas no Premium */}
                 {plan.highlight && (
                   <span className="absolute left-1/2 -translate-x-1/2 top-3 bg-menta text-white text-xs font-semibold px-4 py-1 rounded-full shadow">
                     Mais vantajoso
                   </span>
                 )}
 
-                {/* Título */}
                 <h3 className="text-xl font-poppins font-semibold text-escuro flex items-center gap-2 justify-center text-center">
                   {plan.icon && <plan.icon className="w-6 h-6 text-escuro/70" />}
                   {plan.title}
                 </h3>
 
-                {/* Preço (com brinde dentro) */}
                 <div className="rounded-2xl border border-menta/30 bg-gelo p-6 text-center min-h-[100px] flex flex-col items-center justify-center">
                   <div className="text-sm text-gray-600 mb-1">A partir de</div>
                   <div className="text-3xl md:text-4xl font-extrabold font-poppins text-escuro whitespace-nowrap leading-tight tracking-tight">
                     {plan.price}
                   </div>
-
-                  {/* Mensal dentro do bloco */}
                   <p className="text-xs text-gray-500 mt-2">
                     Mensal disponível por{" "}
                     <span className="font-semibold text-escuro">{plan.monthly}</span>
                   </p>
-
-                  {/* Brinde destacado */}
                   <span className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-menta bg-menta/10 ring-1 ring-menta/20 px-2.5 py-1 rounded-full">
                     Receba de brinde o Parceiro Listas 🎁
                   </span>
                 </div>
 
-                {/* Features */}
                 <ul className="space-y-2 text-left px-1">
                   {plan.features.map((f, i) => (
                     <Feature key={i}>{f}</Feature>
                   ))}
                 </ul>
 
-                {/* CTA */}
                 <div className="flex justify-center items-end">
                   <ModernCTA>{plan.cta}</ModernCTA>
                 </div>
 
-                {/* Mensal no rodapé (reforço) */}
                 <p className="text-xs text-gray-500 text-center">
                   Mensal disponível por{" "}
                   <span className="font-semibold text-escuro">{plan.monthly}</span>
@@ -211,7 +201,6 @@ export default function Plans() {
           ))}
         </Slider>
 
-        {/* Rodapé */}
         <div className="mt-12 text-sm text-gray-500 text-center font-inter">
           7 dias de garantia. Sem fidelidade.
         </div>
