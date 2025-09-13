@@ -84,28 +84,19 @@ export default function Plans() {
     },
   ];
 
+  // Mantém o desktop como era (3), tablet 2, mobile 1.
   const sliderSettings = {
     dots: true,
     arrows: true,
     infinite: false,
-    speed: 450,
-    slidesToShow: 3,          // desktop padrão
+    speed: 500,
+    slidesToShow: 3,
     slidesToScroll: 1,
     centerMode: false,
     adaptiveHeight: false,
     responsive: [
-      // <= 1280: mantém 3
       { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } },
-      {
-        breakpoint: 768,    // mobile
-        settings: {
-          slidesToShow: 1,
-          arrows: false,
-          adaptiveHeight: true,
-          centerMode: true,
-          centerPadding: "16px",
-        },
-      },
+      { breakpoint: 768,  settings: { slidesToShow: 1, arrows: false, centerMode: false } },
     ],
   };
 
@@ -132,15 +123,17 @@ export default function Plans() {
         {/* Carrossel */}
         <Slider {...sliderSettings}>
           {plans.map((plan) => (
-            <div key={plan.key} className="px-3">
+            <div key={plan.key} className="px-2 md:px-4 w-full">
               <div
                 className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
-                            ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
-                            flex flex-col gap-4 h-auto w-full max-w-[400px] mx-auto`}
+                  ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
+                  grid grid-rows-[auto_auto_1fr_auto_auto_auto] gap-4 
+                  w-full mx-auto
+                  h-auto md:h-[560px]`}  /* mobile: auto | desktop: altura original */
               >
-                {/* Badge apenas no Premium */}
+                {/* Badge apenas no Premium (posição preservada no desktop) */}
                 {plan.highlight && (
-                  <span className="absolute left-4 -top-3 bg-menta text-white text-xs font-semibold px-4 py-1 rounded-full shadow">
+                  <span className="absolute left-1/2 md:left-1/2 md:-translate-x-1/2 -translate-x-1/2 top-3 bg-menta text-white text-xs font-semibold px-4 py-1 rounded-full shadow">
                     Mais vantajoso
                   </span>
                 )}
@@ -151,14 +144,14 @@ export default function Plans() {
                   {plan.title}
                 </h3>
 
-                {/* Preço + brinde dentro do bloco */}
-                <div className="rounded-2xl border border-menta/30 bg-gelo p-6 text-center flex flex-col items-center justify-center">
+                {/* Preço + brinde dentro do bloco (como você queria) */}
+                <div className="rounded-2xl border border-menta/30 bg-gelo p-6 text-center min-h-[100px] flex flex-col items-center justify-center">
                   <div className="text-sm text-gray-600 mb-1">A partir de</div>
                   <div className="text-3xl md:text-4xl font-extrabold font-poppins text-escuro whitespace-nowrap leading-tight tracking-tight">
                     {plan.price}
                   </div>
 
-                  {/* Mensal no bloco para reforço visual no mobile */}
+                  {/* Mensal (reforço no bloco) */}
                   <p className="text-xs text-gray-500 mt-2">
                     Mensal disponível por{" "}
                     <span className="font-semibold text-escuro">{plan.monthly}</span>
@@ -171,18 +164,18 @@ export default function Plans() {
                 </div>
 
                 {/* Features */}
-                <ul className="space-y-2 text-left px-1">
+                <ul className="space-y-2 text-left px-1 overflow-visible">
                   {plan.features.map((f, i) => (
                     <Feature key={i}>{f}</Feature>
                   ))}
                 </ul>
 
                 {/* CTA */}
-                <div className="flex justify-center">
+                <div className="flex justify-center items-end">
                   <ModernCTA>{plan.cta}</ModernCTA>
                 </div>
 
-                {/* Nota mensal no rodapé do card (reforço) */}
+                {/* Nota mensal no rodapé do card */}
                 <p className="text-xs text-gray-500 text-center">
                   Mensal disponível por{" "}
                   <span className="font-semibold text-escuro">{plan.monthly}</span>
