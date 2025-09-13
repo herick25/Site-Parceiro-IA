@@ -1,3 +1,4 @@
+// src/components/Header.jsx
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChatBubbleBottomCenterTextIcon } from "@heroicons/react/24/outline";
@@ -28,6 +29,8 @@ export default function Header() {
           <a href="#inicio" className="text-menta hover:text-escuro transition">Início</a>
           <a href="#funcionalidades" className="text-menta hover:text-escuro transition">Funcionalidades</a>
           <a href="#planos" className="text-menta hover:text-escuro transition">Planos</a>
+          <a href="#avaliacoes" className="text-menta hover:text-escuro transition">Avaliações</a>
+          <a href="#faq" className="text-menta hover:text-escuro transition">Dúvidas</a>
           <a href="#contato" className="text-menta hover:text-escuro transition">Contato</a>
         </nav>
 
@@ -93,6 +96,8 @@ export default function Header() {
                   <a href="#inicio" onClick={fecharMenu} className="text-menta hover:text-escuro transition">Início</a>
                   <a href="#funcionalidades" onClick={fecharMenu} className="text-menta hover:text-escuro transition">Funcionalidades</a>
                   <a href="#planos" onClick={fecharMenu} className="text-menta hover:text-escuro transition">Planos</a>
+                  <a href="#avaliacoes" onClick={fecharMenu} className="text-menta hover:text-escuro transition">Avaliações</a>
+                  <a href="#faq" onClick={fecharMenu} className="text-menta hover:text-escuro transition">Dúvidas</a>
                   <a href="#contato" onClick={fecharMenu} className="text-menta hover:text-escuro transition">Contato</a>
                 </nav>
               </div>

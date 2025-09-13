@@ -11,13 +11,13 @@ export default function Hero() {
     <div id="inicio" className="pt-24 scroll-mt-24 bg-white" data-aos="fade-up">
       <header className="shadow-md py-10 px-4 text-center">
         <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-2">
-          Tenha um parceiro trabalhando para você dia e noite!
+          Seu Parceiro pessoal no WhatsApp, trabalhando para você dia e noite!
         </h1>
         <p className="text-lg text-menta">
-          Deixe a inteligência artificial organizar sua rotina e facilitar sua vida!
+         Organize tarefas, finanças e metas sem complicação
         </p>
         <div className="mt-6">
-          <ModernCTA onClick={scrollToPlans}>Contrate Já!</ModernCTA>
+          <ModernCTA onClick={scrollToPlans}>Quero meu parceiro no WhatsApp!</ModernCTA>
         </div>
       </header>
 

@@ -7,7 +7,7 @@ export default function Contact() {
     <section id="contato" className="py-20 px-4 bg-white" data-aos="fade-up">
       <div className="max-w-5xl mx-auto">
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold text-escuro">Fale conosco</h2>
+          <h2 className="text-3xl md:text-4xl font-semibold text-escuro">Fale com nossa equipe</h2>
           <p className="mt-2 text-escuro/70">Tire dúvidas ou comece agora. Resposta rápida.</p>
         </div>
 
@@ -41,7 +41,7 @@ export default function Contact() {
               <FaWhatsapp className="w-6 h-6" />
               Falar no WhatsApp
             </ModernCTA>
-            <div className="mt-6 text-xs text-escuro/50">Sem compromisso. Horário comercial.</div>
+            <div className="mt-6 text-xs text-escuro/50">Sem compromisso.</div>
 
             {/* Canais alternativos (botões outline para não competir com o CTA verde) */}
             <div className="mt-6 flex items-center gap-3">

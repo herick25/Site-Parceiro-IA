@@ -61,7 +61,7 @@ export default function Testimonials() {
         {/* key força o react-slick re-inicializar quando muda a quantidade */}
         <Slider {...settings} key={slidesToShow}>
           {depoimentos.map((d, i) => (
-            <div key={i} className="px-3 h-full">
+            <div key={i} className="px-3 h-full">	
               <article
                 className="
                   h-full min-h-[360px] md:min-h-[380px]
