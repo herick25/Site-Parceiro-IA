@@ -74,6 +74,7 @@ const modules = [
       "Personalizado por temas do seu interesse (economia, esportes, tecnologia e +) 📰",
       "No seu ritmo: diário, semanal ou sob demanda 🎯",
       "Resumos rápidos e sem enrolação 💬",
+"Pare de perder tempo com excesso de informação ⌛",
     ],
     image: "/Noticias.png",
     video: "",
