@@ -86,7 +86,7 @@ export default function Plans() {
 
   // Desktop: 3 (sem mudanças)
   // Tablet: 2 (sem mudanças)
-  // Mobile: 1, centralizado, sem variableWidth
+  // Mobile: 1 por vez, largura total, altura estável (sem “pular”)
   const sliderSettings = {
     dots: true,
     arrows: true,
@@ -95,7 +95,7 @@ export default function Plans() {
     slidesToShow: 3,           // PC igual
     slidesToScroll: 1,
     centerMode: false,
-    adaptiveHeight: false,
+    adaptiveHeight: false,     // mantém track estável
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } }, // tablet igual
       {
@@ -105,7 +105,9 @@ export default function Plans() {
           arrows: false,
           centerMode: false,
           variableWidth: false,
-          adaptiveHeight: true,
+          swipeToSlide: true,
+          adaptiveHeight: false, // evita “pulo” de altura no mobile
+          initialSlide: 0,
         },
       },
     ],
@@ -134,14 +136,17 @@ export default function Plans() {
         {/* Carrossel */}
         <Slider {...sliderSettings}>
           {plans.map((plan) => (
-            // width total no mobile para evitar esmagar; no desktop/tablet segue como antes
-            <div key={plan.key} className="px-3 w-full max-w-[420px] md:max-w-none mx-auto">
+            // ⚠️ MOBILE: largura total; DESKTOP: mantém como estava
+            <div
+              key={plan.key}
+              className="px-3 w-full max-w-full md:max-w-none mx-auto"
+            >
               <div
                 className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
                             ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
                             grid grid-rows-[auto_auto_1fr_auto_auto] gap-4
                             w-full
-                            h-auto md:h-[520px]`}  // mobile: natural; PC: altura como antes
+                            h-auto md:h-[520px]`}
               >
                 {/* Badge apenas no Premium */}
                 {plan.highlight && (

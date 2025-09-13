@@ -2,38 +2,58 @@
 @tailwind components;
 @tailwind utilities;
 
-body { 
-  @apply bg-gray-50 text-gray-800 font-sans; 
+/* ======================== */
+/* Base                     */
+/* ======================== */
+body {
+  @apply bg-gray-50 text-gray-800 font-sans;
 }
 
-h1, h2, h3 { 
-  @apply text-gray-900 font-semibold; 
+h1, h2, h3 {
+  @apply text-gray-900 font-semibold;
 }
 
-/* Setas e dots em menta */
+/* ======================== */
+/* Slick: setas e dots      */
+/* ======================== */
 .slick-prev:before,
-.slick-next:before { 
-  color:#3a7f5c !important; 
-  opacity:1 !important; 
-}
-.slick-dots li button:before { 
-  color:#3a7f5c !important; 
-  opacity:.45 !important; 
-}
-.slick-dots li.slick-active button:before { 
-  color:#3a7f5c !important; 
-  opacity:1 !important; 
+.slick-next:before {
+  color: #3a7f5c !important;  /* menta */
+  opacity: 1 !important;
 }
 
-/* 🔧 Alturas consistentes sem quebrar o cálculo de largura do slick */
-.slick-slide > div { 
-  height: 100%; 
+.slick-dots li button:before {
+  color: #3a7f5c !important;  /* menta */
+  opacity: .45 !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #3a7f5c !important;  /* menta */
+  opacity: 1 !important;
+}
+
+/* Alturas consistentes dentro do slide */
+.slick-slide > div {
+  height: 100%;
+}
+
+/* ============================= */
+/*  Ajuste específico para MOBILE */
+/*  (não altera o desktop)        */
+/* ============================= */
+@media (max-width: 767px) {
+  /* Evita “vazamento” lateral e garante track estável */
+  .slick-slider { overflow: hidden; }
+  .slick-track { display: flex; }
+  .slick-slide { height: auto; }
+
+  /* Garante que o wrapper do slide ocupe 100% da largura/altura disponível */
+  .slick-slide > div { height: 100%; width: 100%; }
 }
 
 /* ============================= */
 /* ✨ Animação de flutuar sutil  */
 /* ============================= */
-
 @keyframes subtle-float {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-12px); } /* sobe/ desce mais */
