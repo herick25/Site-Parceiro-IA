@@ -84,9 +84,9 @@ export default function Plans() {
     },
   ];
 
-  // Desktop: 3 (sem mudanças)
-  // Tablet: 2 (sem mudanças)
-  // Mobile: 1 por vez, largura total, altura estável (sem “pular”)
+  // Desktop: 3 (igual)
+  // Tablet: 2 (igual)
+  // Mobile: 1 por vez, largura total, sem “pulos” de altura
   const sliderSettings = {
     dots: true,
     arrows: true,
@@ -95,18 +95,22 @@ export default function Plans() {
     slidesToShow: 3,           // PC igual
     slidesToScroll: 1,
     centerMode: false,
-    adaptiveHeight: false,     // mantém track estável
+    adaptiveHeight: false,
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } }, // tablet igual
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
           arrows: false,
           centerMode: false,
+          centerPadding: "0px",
           variableWidth: false,
+          rows: 1,
+          slidesPerRow: 1,
           swipeToSlide: true,
-          adaptiveHeight: false, // evita “pulo” de altura no mobile
+          adaptiveHeight: false, // estável no mobile
           initialSlide: 0,
         },
       },
@@ -136,11 +140,8 @@ export default function Plans() {
         {/* Carrossel */}
         <Slider {...sliderSettings}>
           {plans.map((plan) => (
-            // ⚠️ MOBILE: largura total; DESKTOP: mantém como estava
-            <div
-              key={plan.key}
-              className="px-3 w-full max-w-full md:max-w-none mx-auto"
-            >
+            // MOBILE: ocupa 100% da largura | DESKTOP: mantém como estava
+            <div key={plan.key} className="px-0 sm:px-3 w-full max-w-full md:max-w-none mx-auto">
               <div
                 className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
                             ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}

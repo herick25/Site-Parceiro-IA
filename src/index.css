@@ -42,13 +42,11 @@ h1, h2, h3 {
 /*  (não altera o desktop)        */
 /* ============================= */
 @media (max-width: 767px) {
-  /* Evita “vazamento” lateral e garante track estável */
   .slick-slider { overflow: hidden; }
-  .slick-track { display: flex; }
-  .slick-slide { height: auto; }
-
-  /* Garante que o wrapper do slide ocupe 100% da largura/altura disponível */
-  .slick-slide > div { height: 100%; width: 100%; }
+  .slick-list   { overflow: hidden; }
+  .slick-track  { display: flex; }
+  .slick-slide  { width: 100% !important; height: auto; }
+  .slick-slide > div { width: 100%; height: 100%; }
 }
 
 /* ============================= */
