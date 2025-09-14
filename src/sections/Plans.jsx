@@ -1,4 +1,4 @@
-// src/sections/Plans.jsx
+// src/sections/Plans.jsx 
 import React from "react";
 import ModernCTA from "../components/ModernCTA";
 import Slider from "react-slick";
@@ -102,7 +102,7 @@ export default function Plans() {
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } }, // tablet igual
       {
-        breakpoint: 767, // <= 767px (alinhado ao seu CSS mobile)
+        breakpoint: 768, // <= 767px (corrigido aqui!)
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -147,7 +147,6 @@ export default function Plans() {
         {/* Carrossel */}
         <Slider {...sliderSettings} className="plans-slider" key={plans.length}>
           {plans.map((plan) => (
-            // MOBILE: largura total | PC/Tablet: como estava
             <div key={plan.key} className="px-0 sm:px-3 w-full max-w-full md:max-w-none mx-auto">
               <div
                 className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
