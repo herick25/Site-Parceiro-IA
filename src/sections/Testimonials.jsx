@@ -1,22 +1,20 @@
 import React from "react";
 import Slider from "react-slick";
-import { FaStar, FaRegStar, FaQuoteLeft } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const depoimentos = [
-  { texto: "Eu vivia perdendo prazo de boleto. Com o Parceiro IA, parei de tomar susto. Em duas semanas já tava tudo redondo.", nome: "João Pedro", cargo: "Assistente Administrativo", avatar: "/avatars/joao.jpg", rating: 5 },
-  { texto: "Queria algo simples pra juntar trabalho e finanças. O Parceiro IA resolveu minha vida. Uso todo dia.", nome: "Jessica Pereira", cargo: "Autônoma", avatar: "/avatars/maria.jpg", rating: 5 },
-  { texto: "Agenda lotada aqui. Os lembretes são top e rapidinho já vejo tudo. Bem prático mesmo.", nome: "Debora Teixeira", cargo: "Empreendedora", avatar: "/avatars/lucas.jpg", rating: 5 },
-  { texto: "Pra mim o destaque é a parte de gastos. Envio a compra no chat e pronto, já cai na categoria certinha.", nome: "Ana Souza", cargo: "Analista de Projetos", avatar: "/avatars/ana.jpg", rating: 4 },
-  { texto: "A função de listas salvou nas compras e nos estudos. Rápido, sem frescura. Recomendo!", nome: "Pedro Henrique", cargo: "Estudante", avatar: "/avatars/pedro.jpg", rating: 5 },
-  { texto: "Tava desconfiada no começo, mas curti. Me lembra do dentista, reunião, tudo. Não fico mais perdida.", nome: "Fernanda Rocha", cargo: "Autônoma", avatar: "/avatars/fernanda.jpg", rating: 4 },
-  { texto: "O melhor é que não preciso abrir app nenhum. Mando áudio no Whats e já resolve. Simples e direto.", nome: "Rafael Souza", cargo: "Vendedor", avatar: "/avatars/rafael.jpg", rating: 5 },
-  { texto: "Uso pra metas de treino e estudos. Os lembretes dão aquela motivação que faltava.", nome: "Wesley Nogueira", cargo: "Personal Trainer", avatar: "/avatars/carla.jpg", rating: 5 },
+// ⚠️ Agora são só imagens (sem texto/estrelas/avatars)
+const imagens = [
+  { src: "/testimonials/whats-1.jpg", alt: "Depoimento WhatsApp 1" },
+  { src: "/testimonials/whats-2.jpg", alt: "Depoimento WhatsApp 2" },
+  { src: "/testimonials/whats-3.jpg", alt: "Depoimento WhatsApp 3" },
+  { src: "/testimonials/whats-4.jpg", alt: "Depoimento WhatsApp 4" },
+  { src: "/testimonials/whats-5.jpg", alt: "Depoimento WhatsApp 5" },
+  { src: "/testimonials/whats-6.jpg", alt: "Depoimento WhatsApp 6" },
 ];
 
 export default function Testimonials() {
-  // define 1 no mobile, 2 no tablet, 3 no desktop
+  // mesma lógica: 1 mobile, 2 tablet, 3 desktop
   const calcSlides = () => {
     const w = typeof window !== "undefined" ? window.innerWidth : 1200;
     if (w <= 768) return 1;   // mobile
@@ -39,16 +37,16 @@ export default function Testimonials() {
     speed: 600,
     autoplay: true,
     autoplaySpeed: 5000,
-    slidesToShow,            // <- mandatório
+    slidesToShow,
     slidesToScroll: 1,
     centerMode: false,
     centerPadding: "0px",
-    // mantemos responsive como backup
+    adaptiveHeight: false,
+    // backup de breakpoints (como antes)
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
       { breakpoint: 768,  settings: { slidesToShow: 1 } },
     ],
-    adaptiveHeight: false,
   };
 
   return (
@@ -58,50 +56,28 @@ export default function Testimonials() {
           O que nossos clientes dizem:
         </h2>
 
-        {/* key força o react-slick re-inicializar quando muda a quantidade */}
+        {/* key força reinit quando muda quantidade */}
         <Slider {...settings} key={slidesToShow}>
-          {depoimentos.map((d, i) => (
-            <div key={i} className="px-3 h-full">	
+          {imagens.map((img, i) => (
+            <div key={i} className="px-3">
               <article
                 className="
-                  h-full min-h-[360px] md:min-h-[380px]
                   rounded-2xl bg-white shadow-sm ring-1 ring-black/5
-                  p-6 flex flex-col justify-between hover:shadow-md transition-shadow
-                  max-w-[360px] mx-auto
+                  p-2 max-w-[380px] mx-auto hover:shadow-md transition-shadow
                 "
               >
-                <div className="flex items-center justify-center text-4xl text-black/10" aria-hidden>
-                  <FaQuoteLeft />
-                </div>
-
-                <p className="mt-4 text-[15px] leading-relaxed text-[#1f2f2b]/80 text-center line-clamp-5">
-                  {d.texto}
-                </p>
-
-                <div className="mt-4 flex items-center justify-center gap-1" aria-label={`avaliação ${d.rating} de 5`}>
-                  {[1,2,3,4,5].map(n =>
-                    n <= d.rating ? (
-                      <FaStar key={n} className="h-5 w-5 text-[#58b179]" />
-                    ) : (
-                      <FaRegStar key={n} className="h-5 w-5 text-[#58b179]" />
-                    )
-                  )}
-                </div>
-
-                <div className="mt-6 flex items-center justify-center gap-3">
+                {/* container da imagem */}
+                <div className="overflow-hidden rounded-xl">
                   <img
-                    src={d.avatar}
-                    alt={d.nome}
+                    src={img.src}
+                    alt={img.alt}
+                    loading="lazy"
+                    className="w-full h-auto object-cover"
                     onError={(e) => {
-                      e.currentTarget.outerHTML =
-                        `<div class="h-10 w-10 rounded-full bg-gradient-to-br from-[#58b179] to-emerald-600 flex items-center justify-center text-white font-semibold">${d.nome.charAt(0)}</div>`;
+                      e.currentTarget.style.opacity = "0.4";
+                      e.currentTarget.alt = "Imagem não encontrada";
                     }}
-                    className="h-10 w-10 rounded-full object-cover ring-1 ring-black/10"
                   />
-                  <div className="text-center">
-                    <div className="font-semibold text-[#1f2f2b] leading-tight">{d.nome}</div>
-                    <div className="text-sm text-[#1f2f2b]/60">{d.cargo}</div>
-                  </div>
                 </div>
               </article>
             </div>
