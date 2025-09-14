@@ -41,13 +41,8 @@ h1, h2, h3 {
 /*  Ajuste específico para MOBILE */
 /* ============================= */
 @media (max-width: 767px) {
-  .plans-slider .slick-list   { overflow: hidden; }
-  .plans-slider .slick-track  { display: flex !important; }
-  .plans-slider .slick-slide  { width: 100% !important; flex: 0 0 100% !important; }
-  .plans-slider .slick-slide > div { width: 100% !important; height: 100% !important; }
-
-  /* Garantir render inicial */
-  .plans-slider.slick-initialized .slick-slide { display: block !important; }
+  /* Deixe o slick controlar o layout; apenas garanta contenção */
+  .plans-slider .slick-list { overflow: hidden; }
 
   /* Dots mais visíveis */
   .plans-slider .slick-dots {
