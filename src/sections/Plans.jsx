@@ -102,7 +102,7 @@ export default function Plans() {
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } }, // tablet igual
       {
-        breakpoint: 768, // <= 768px
+        breakpoint: 767, // <= 767px (alinhado ao seu CSS mobile)
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
