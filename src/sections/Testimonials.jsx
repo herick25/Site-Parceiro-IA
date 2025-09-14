@@ -4,12 +4,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const depoimentos = [
-  { src: "/testimonials/whats-1.jpg", nome: "João Pedro", cargo: "Assistente Administrativo" },
-  { src: "/testimonials/whats-2.jpg", nome: "Jessica Pereira", cargo: "Autônoma" },
-  { src: "/testimonials/whats-3.jpg", nome: "Debora Teixeira", cargo: "Empreendedora" },
-  { src: "/testimonials/whats-4.jpg", nome: "Ana Souza", cargo: "Analista de Projetos" },
+  { src: "/testimonials/whats-1.jpg", nome: "Rafael Souza", cargo: "Assistente Administrativo" },
+  { src: "/testimonials/whats-2.jpg", nome: "Fernanda Rocha", cargo: "Autônoma" },
+  { src: "/testimonials/whats-3.jpg", nome: "João Pedro", cargo: "Estagiário" },
+  { src: "/testimonials/whats-4.jpg", nome: "Jessica Pereira", cargo: "Analista de Projetos" },
   { src: "/testimonials/whats-5.jpg", nome: "Pedro Henrique", cargo: "Estudante" },
-  { src: "/testimonials/whats-6.jpg", nome: "Fernanda Rocha", cargo: "Autônoma" },
 ];
 
 export default function Testimonials() {
