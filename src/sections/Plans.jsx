@@ -28,7 +28,7 @@ export default function Plans() {
         "Nunca mais perca tempo pulando de app em app.",
         "Sua vida inteira no WhatsApp.",
       ],
-      cta: "Quero Meu Parceiro completo",
+      cta: "Quero Meu Parceiro Completo", // <- exatamente como você pediu
       icon: CheckCircleIcon,
     },
     {
@@ -81,24 +81,24 @@ export default function Plans() {
     },
   ];
 
+  // Desktop é o padrão (3) — não uso mobileFirst.
   const settings = {
     dots: true,
     infinite: false,
     speed: 400,
     swipeToSlide: true,
     adaptiveHeight: true,
-    arrows: false,
-    mobileFirst: true,      // base = mobile
-    slidesToShow: 1,        // mobile = 1 slide
+    arrows: false,          // mantenho como estava no desktop
+    slidesToShow: 3,        // DESKTOP PADRÃO
     slidesToScroll: 1,
     responsive: [
       {
-        breakpoint: 768,    // ≥768px (tablet)
+        breakpoint: 1024,   // ≤1024px (tablet)
         settings: { slidesToShow: 2, slidesToScroll: 1, arrows: true },
       },
       {
-        breakpoint: 1024,   // ≥1024px (desktop)
-        settings: { slidesToShow: 3, slidesToScroll: 1, arrows: true },
+        breakpoint: 768,    // ≤768px (mobile)
+        settings: { slidesToShow: 1, slidesToScroll: 1, arrows: false },
       },
     ],
   };
