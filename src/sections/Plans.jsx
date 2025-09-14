@@ -88,39 +88,35 @@ export default function Plans() {
     },
   ];
 
-  // PC: 3 | Tablet: 2 | Mobile: 1 (sem mexer no PC)
+  // === MESMA LÓGICA DO TESTIMONIALS ===
+  // define 1 no mobile, 2 no tablet, 3 no desktop
+  const calcSlides = () => {
+    const w = typeof window !== "undefined" ? window.innerWidth : 1200;
+    if (w <= 768) return 1;    // mobile
+    if (w <= 1024) return 2;   // tablet
+    return 3;                  // desktop
+  };
+  const [slidesToShow, setSlidesToShow] = React.useState(calcSlides());
+  React.useEffect(() => {
+    const onResize = () => setSlidesToShow(calcSlides());
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // PC: 3 | Tablet: 2 | Mobile: 1  (sem mexer em textos/estilo)
   const sliderSettings = {
     dots: true,
     arrows: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,              // PC igual
+    slidesToShow,            // <- exatamente como no Testimonials
     slidesToScroll: 1,
     centerMode: false,
     adaptiveHeight: false,
-    // IMPORTANTE: sem mobileFirst -> breakpoints são "máximos"
+    // responsive de backup (como no Testimonials)
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2, arrows: true, centerMode: false } }, // tablet igual
-      {
-        breakpoint: 768, // <= 767px (corrigido aqui!)
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          centerMode: false,
-          centerPadding: "0px",
-          variableWidth: false,
-          swipe: true,
-          swipeToSlide: true,
-          touchMove: true,
-          draggable: true,
-          touchThreshold: 6,
-          cssEase: "ease-out",
-          speed: 350,
-          adaptiveHeight: false,
-          initialSlide: 0,
-        },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768,  settings: { slidesToShow: 1, arrows: false } },
     ],
   };
 
@@ -145,8 +141,10 @@ export default function Plans() {
         </div>
 
         {/* Carrossel */}
-        <Slider {...sliderSettings} className="plans-slider" key={plans.length}>
+        {/* key força o react-slick re-inicializar quando muda a quantidade */}
+        <Slider {...sliderSettings} className="plans-slider" key={slidesToShow}>
           {plans.map((plan) => (
+            // MOBILE: largura total | PC/Tablet: como estava
             <div key={plan.key} className="px-0 sm:px-3 w-full max-w-full md:max-w-none mx-auto">
               <div
                 className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
