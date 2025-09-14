@@ -3,14 +3,13 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// ⚠️ Agora são só imagens (sem texto/estrelas/avatars)
-const imagens = [
-  { src: "/testimonials/whats-1.jpg", alt: "Depoimento WhatsApp 1" },
-  { src: "/testimonials/whats-2.jpg", alt: "Depoimento WhatsApp 2" },
-  { src: "/testimonials/whats-3.jpg", alt: "Depoimento WhatsApp 3" },
-  { src: "/testimonials/whats-4.jpg", alt: "Depoimento WhatsApp 4" },
-  { src: "/testimonials/whats-5.jpg", alt: "Depoimento WhatsApp 5" },
-  { src: "/testimonials/whats-6.jpg", alt: "Depoimento WhatsApp 6" },
+const depoimentos = [
+  { src: "/testimonials/whats-1.jpg", nome: "João Pedro", cargo: "Assistente Administrativo" },
+  { src: "/testimonials/whats-2.jpg", nome: "Jessica Pereira", cargo: "Autônoma" },
+  { src: "/testimonials/whats-3.jpg", nome: "Debora Teixeira", cargo: "Empreendedora" },
+  { src: "/testimonials/whats-4.jpg", nome: "Ana Souza", cargo: "Analista de Projetos" },
+  { src: "/testimonials/whats-5.jpg", nome: "Pedro Henrique", cargo: "Estudante" },
+  { src: "/testimonials/whats-6.jpg", nome: "Fernanda Rocha", cargo: "Autônoma" },
 ];
 
 export default function Testimonials() {
@@ -42,7 +41,6 @@ export default function Testimonials() {
     centerMode: false,
     centerPadding: "0px",
     adaptiveHeight: false,
-    // backup de breakpoints (como antes)
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
       { breakpoint: 768,  settings: { slidesToShow: 1 } },
@@ -56,21 +54,21 @@ export default function Testimonials() {
           O que nossos clientes dizem:
         </h2>
 
-        {/* key força reinit quando muda quantidade */}
         <Slider {...settings} key={slidesToShow}>
-          {imagens.map((img, i) => (
+          {depoimentos.map((d, i) => (
             <div key={i} className="px-3">
               <article
                 className="
                   rounded-2xl bg-white shadow-sm ring-1 ring-black/5
-                  p-2 max-w-[380px] mx-auto hover:shadow-md transition-shadow
+                  p-4 max-w-[380px] mx-auto hover:shadow-md transition-shadow
+                  flex flex-col
                 "
               >
-                {/* container da imagem */}
+                {/* Foto do elogio */}
                 <div className="overflow-hidden rounded-xl">
                   <img
-                    src={img.src}
-                    alt={img.alt}
+                    src={d.src}
+                    alt={`Depoimento de ${d.nome}`}
                     loading="lazy"
                     className="w-full h-auto object-cover"
                     onError={(e) => {
@@ -78,6 +76,19 @@ export default function Testimonials() {
                       e.currentTarget.alt = "Imagem não encontrada";
                     }}
                   />
+                </div>
+
+                {/* Nome e cargo embaixo */}
+                <div className="mt-4 flex items-center justify-center gap-3">
+                  <div className="h-10 w-10 rounded-full bg-gradient-to-br from-[#58b179] to-emerald-600 flex items-center justify-center text-white font-semibold">
+                    {d.nome.charAt(0)}
+                  </div>
+                  <div className="text-center">
+                    <div className="font-semibold text-[#1f2f2b] leading-tight">
+                      {d.nome}
+                    </div>
+                    <div className="text-sm text-[#1f2f2b]/60">{d.cargo}</div>
+                  </div>
                 </div>
               </article>
             </div>
