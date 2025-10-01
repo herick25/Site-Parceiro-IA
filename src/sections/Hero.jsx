@@ -14,26 +14,30 @@ export default function Hero() {
           Seu Parceiro pessoal no WhatsApp, trabalhando para você dia e noite!
         </h1>
         <p className="text-lg text-menta">
-         Organize tarefas, finanças e metas sem complicação
+          Organize tarefas, finanças e metas sem complicação
         </p>
         <div className="mt-6">
-          <ModernCTA onClick={scrollToPlans}>Quero meu parceiro no WhatsApp!</ModernCTA>
+          <ModernCTA onClick={scrollToPlans}>
+            Quero meu parceiro no WhatsApp!
+          </ModernCTA>
         </div>
       </header>
 
-      <section className="max-w-4xl mx-auto px-4 py-12">
-        <h2 className="text-3xl font-semibold text-escuro mb-2 bg-gradient-to-r from-menta to-emerald-600 text-white py-2 px-4 rounded-lg shadow-md inline-block">
-          O que é o Parceiro IA?
+      <section className="max-w-4xl mx-auto px-4 py-12 text-center">
+        <h2 className="text-3xl md:text-5xl font-extrabold font-poppins text-escuro mb-6">
+          O que é o Parceiro <span className="text-menta">IA?</span>
         </h2>
-        <p className="text-gray-800 mb-4">
-          Imagine ter um assistente pessoal digital que organiza suas tarefas, controla seus gastos,
-          acompanha suas metas e gerencia suas listas, tudo diretamente no seu WhatsApp!
+        <p className="text-lg text-gray-700 mb-4">
+          Imagine ter um assistente pessoal digital que organiza suas tarefas,
+          controla seus gastos, acompanha suas metas e gerencia suas listas —
+          tudo diretamente no seu WhatsApp!
         </p>
-        <p className="text-gray-800">
-          Se você busca praticidade, controle e mais organização no seu dia, o Parceiro IA é a solução
-          inteligente que você estava procurando.
+        <p className="text-lg text-gray-700">
+          Se você busca praticidade, controle e mais organização no seu dia,
+          o Parceiro IA é a solução inteligente que você estava procurando.
         </p>
       </section>
     </div>
   );
 }
+
