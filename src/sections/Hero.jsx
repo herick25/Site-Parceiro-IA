@@ -29,7 +29,7 @@ export default function Hero() {
         </h2>
         <p className="text-lg text-gray-700 mb-4">
           Imagine ter um assistente pessoal digital que organiza suas tarefas,
-          controla seus gastos, acompanha suas metas e gerencia suas listas —
+          controla seus gastos, acompanha suas metas e gerencia suas listas,
           tudo diretamente no seu WhatsApp!
         </p>
         <p className="text-lg text-gray-700">

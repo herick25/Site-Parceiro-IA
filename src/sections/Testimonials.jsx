@@ -49,9 +49,12 @@ export default function Testimonials() {
   return (
     <section id="avaliacoes" className="py-16 px-4 bg-gelo" data-aos="fade-up">
       <div className="mx-auto max-w-6xl">
-        <h2 className="text-3xl md:text-4xl font-semibold text-[#1f2f2b] text-center mb-10">
-          O que nossos clientes dizem:
+        <h2 className="text-3xl md:text-4xl font-semibold text-[#1f2f2b] text-center mb-3">
+          A Experiência dos Nossos Clientes ✨
         </h2>
+        <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+          Veja como o Parceiro IA já está transformando a rotina de nossos clientes.
+        </p>
 
         <Slider {...settings} key={slidesToShow}>
           {depoimentos.map((d, i) => (
@@ -71,8 +74,8 @@ export default function Testimonials() {
                     loading="lazy"
                     className="w-full h-auto object-cover"
                     onError={(e) => {
-                      e.currentTarget.style.opacity = "0.4";
-                      e.currentTarget.alt = "Imagem não encontrada";
+                      e.currentTarget.style.opacity = '0.4';
+                      e.currentTarget.alt = 'Imagem não encontrada';
                     }}
                   />
                 </div>
