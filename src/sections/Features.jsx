@@ -40,7 +40,7 @@ const modules = [
     id: "financeiro",
     title: "Parceiro Finanças",
     icon: CurrencyDollarIcon,
-    punchline: "Descubra para onde seu dinheiro vai sem planilhas, sem fricção.",
+    punchline: "Descubra pra onde seu dinheiro vai de forma simples e rápida.",
     bullets: [
       "Registre gastos por voz ou texto zero esforço 🗣️",
       "Visão clara por categoria e período 💡",
