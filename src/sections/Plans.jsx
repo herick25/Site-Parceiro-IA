@@ -3,10 +3,7 @@ import React from "react";
 import ModernCTA from "../components/ModernCTA";
 import Slider from "react-slick";
 import {
-  CurrencyDollarIcon,
-  CalendarIcon,
   NewspaperIcon,
-  FlagIcon,
   CheckCircleIcon,
 } from "@heroicons/react/24/outline";
 
@@ -27,7 +24,7 @@ export default function Plans() {
       price: PRICES.premium.annual,
       monthly: PRICES.premium.monthly,
       features: [
-        "Tudo em um só lugar: finanças, agenda, metas e notícias.",
+        "Tudo em um só lugar: finanças, agenda, metas, listas e notícias.",
         "Nunca mais perca tempo pulando de app em app.",
         "Seu parceiro que organiza a vida inteira no WhatsApp.",
       ],
@@ -35,56 +32,17 @@ export default function Plans() {
       highlight: true,
     },
     {
-      key: "financas",
-      title: "Parceiro Finanças",
-      price: PRICES.basic.annual,
-      monthly: PRICES.basic.monthly,
-      features: [
-        "Controle seus gastos sem esforço.",
-        "Descubra para onde seu dinheiro vai.",
-        "Relatórios claros para decidir melhor.",
-      ],
-      cta: "Quero controlar meu dinheiro",
-      icon: CurrencyDollarIcon,
-    },
-    {
-      key: "rotina",
-      title: "Parceiro Rotina",
-      price: PRICES.basic.annual,
-      monthly: PRICES.basic.monthly,
-      features: [
-        "Nunca mais esqueça um compromisso.",
-        "Receba alertas no momento certo.",
-        "Seu dia organizado do começo ao fim.",
-      ],
-      cta: "Quero organizar meu dia",
-      icon: CalendarIcon,
-    },
-    {
       key: "noticias",
       title: "Parceiro Notícias",
       price: PRICES.basic.annual,
       monthly: PRICES.basic.monthly,
       features: [
-        "Receba só as notícias de seu interesse.",
+        "Receba só as notícias de seu interesse, direto no WhatsApp.",
         "Pare de perder tempo com excesso de informação.",
-        "Resumos rápidos.",
+        "Resumos rápidos, em linguagem simples e objetiva.",
       ],
       cta: "Quero só o que importa",
       icon: NewspaperIcon,
-    },
-    {
-      key: "metas",
-      title: "Parceiro Metas",
-      price: PRICES.basic.annual,
-      monthly: PRICES.basic.monthly,
-      features: [
-        "Tire suas metas do papel.",
-        "Acompanhe o progresso sem esforço.",
-        "Pequenas vitórias que mantêm você no ritmo.",
-      ],
-      cta: "Quero tirar metas do papel",
-      icon: FlagIcon,
     },
   ];
 
@@ -96,24 +54,27 @@ export default function Plans() {
     if (w <= 1024) return 2;   // tablet
     return 3;                  // desktop
   };
+
   const [slidesToShow, setSlidesToShow] = React.useState(calcSlides());
+
   React.useEffect(() => {
     const onResize = () => setSlidesToShow(calcSlides());
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // PC: 3 | Tablet: 2 | Mobile: 1  (sem mexer em textos/estilo)
+  // PC: 3 | Tablet: 2 | Mobile: 1
+  // Usa o mínimo entre slidesToShow e a quantidade de planos,
+  // pra não sobrar "slot vazio" com só 2 planos.
   const sliderSettings = {
     dots: true,
     arrows: true,
     infinite: false,
     speed: 500,
-    slidesToShow,            // <- exatamente como no Testimonials
+    slidesToShow: Math.min(slidesToShow, plans.length),
     slidesToScroll: 1,
     centerMode: false,
     adaptiveHeight: false,
-    // responsive de backup (como no Testimonials)
     responsive: [
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
       { breakpoint: 768,  settings: { slidesToShow: 1, arrows: false } },
@@ -128,7 +89,11 @@ export default function Plans() {
   );
 
   return (
-    <section id="planos" className="py-20 bg-white px-4 scroll-mt-24" data-aos="fade-up">
+    <section
+      id="planos"
+      className="py-20 bg-white px-4 scroll-mt-24"
+      data-aos="fade-up"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12">
@@ -141,14 +106,24 @@ export default function Plans() {
         </div>
 
         {/* Carrossel */}
-        {/* key força o react-slick re-inicializar quando muda a quantidade */}
-        <Slider {...sliderSettings} className="plans-slider" key={slidesToShow}>
+        <Slider
+          {...sliderSettings}
+          className="plans-slider"
+          key={slidesToShow}
+        >
           {plans.map((plan) => (
             // MOBILE: largura total | PC/Tablet: como estava
-            <div key={plan.key} className="px-0 sm:px-3 w-full max-w-full md:max-w-none mx-auto">
+            <div
+              key={plan.key}
+              className="px-0 sm:px-3 w-full max-w-full md:max-w-none mx-auto"
+            >
               <div
                 className={`relative overflow-visible rounded-2xl p-8 pt-12 bg-white
-                            ${plan.highlight ? "border-2 border-menta shadow-xl" : "border border-gray-200 shadow-md hover:shadow-lg"}
+                            ${
+                              plan.highlight
+                                ? "border-2 border-menta shadow-xl"
+                                : "border border-gray-200 shadow-md hover:shadow-lg"
+                            }
                             grid grid-rows-[auto_auto_1fr_auto_auto] gap-4
                             w-full
                             h-auto md:h-[520px]`}
@@ -160,7 +135,9 @@ export default function Plans() {
                 )}
 
                 <h3 className="text-xl font-poppins font-semibold text-escuro flex items-center gap-2 justify-center text-center">
-                  {plan.icon && <plan.icon className="w-6 h-6 text-escuro/70" />}
+                  {plan.icon && (
+                    <plan.icon className="w-6 h-6 text-escuro/70" />
+                  )}
                   {plan.title}
                 </h3>
 
@@ -171,7 +148,9 @@ export default function Plans() {
                   </div>
                   <p className="text-xs text-gray-500 mt-2">
                     Mensal disponível por{" "}
-                    <span className="font-semibold text-escuro">{plan.monthly}</span>
+                    <span className="font-semibold text-escuro">
+                      {plan.monthly}
+                    </span>
                   </p>
                   <span className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-menta bg-menta/10 ring-1 ring-menta/20 px-2.5 py-1 rounded-full">
                     Receba de brinde o Parceiro Listas 🎁
@@ -190,7 +169,9 @@ export default function Plans() {
 
                 <p className="text-xs text-gray-500 text-center">
                   Mensal disponível por{" "}
-                  <span className="font-semibold text-escuro">{plan.monthly}</span>
+                  <span className="font-semibold text-escuro">
+                    {plan.monthly}
+                  </span>
                 </p>
               </div>
             </div>

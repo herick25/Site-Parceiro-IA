@@ -5,12 +5,13 @@ import Header from "./components/Header";
 import SiteFooter from "./components/SiteFooter";
 import Hero from "./sections/Hero";
 import Features from "./sections/Features";
-import Plans from "./sections/Plans";          // <-- Planos vem antes
+import Plans from "./sections/Plans";
 import Testimonials from "./sections/Testimonials";
-import FAQ from "./sections/FAQ";              // <-- novo import
+import FAQ from "./sections/FAQ";
 import Contact from "./sections/Contact";
 import Termos from "./pages/Termos";
 import Privacidade from "./pages/Privacidade";
+import Checkout from "./pages/Checkout";   // <-- IMPORTANTE
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -22,6 +23,7 @@ export default function App() {
   return (
     <div className="bg-gelo text-escuro min-h-screen font-sans scroll-smooth">
       <Routes>
+        {/* Página principal */}
         <Route
           path="/"
           element={
@@ -31,13 +33,20 @@ export default function App() {
               <Features />
               <Plans />
               <Testimonials />
-              <FAQ />          {/* nova seção */}
+              <FAQ />
               <Contact />
               <SiteFooter />
             </>
           }
         />
+
+        {/* Checkout */}
+        <Route path="/checkout" element={<Checkout />} />
+
+        {/* Termos */}
         <Route path="/termos" element={<Termos />} />
+
+        {/* Privacidade */}
         <Route path="/privacidade" element={<Privacidade />} />
       </Routes>
     </div>
